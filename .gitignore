@@ -1,0 +1,22 @@
+# Ignore all node_modules folders
+**/node_modules/
+
+# Ignore environment files
+**/.env
+
+# Ignore log files
+*.log
+
+# Ignore system and temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.lock
+
+# Ignore dist/build files (common in client/server projects)
+**/dist/
+**/build/
+
+# Ignore temporary IDE and OS folders
+.vscode/
+.idea/

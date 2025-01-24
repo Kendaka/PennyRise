@@ -1,0 +1,15 @@
+export const currencyOptions = [
+  { value: 'USD', label: 'USD - $' },
+  { value: 'EUR', label: 'EUR - €' },
+  { value: 'GBP', label: 'GBP - £' },
+  { value: 'JPY', label: 'JPY - ¥' },
+  { value: 'AUD', label: 'AUD - A$' },
+  { value: 'CAD', label: 'CAD - C$' },
+  { value: 'CHF', label: 'CHF - CHF' },
+  { value: 'CNY', label: 'CNY - ¥' },
+  { value: 'INR', label: 'INR - ₹' },
+  { value: 'MXN', label: 'MXN - $' },
+  { value: 'BRL', label: 'BRL - R$' },
+  { value: 'ZAR', label: 'ZAR - R' },
+  { value: 'PHP', label: 'PHP - ₱' },
+];
