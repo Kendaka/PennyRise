@@ -14,7 +14,4 @@ router.put('/change-password', authenticateToken, userController.changePassword)
 router.get('/profile', authenticateToken, userController.getProfile);
 router.put('/reset-monthly-data', userController.resetMonthlyData);
 
-router.get('/auth/google', userController.googleOAuth);
-router.get('/auth/google/callback', userController.googleOAuthCallback);
-
 module.exports = router;

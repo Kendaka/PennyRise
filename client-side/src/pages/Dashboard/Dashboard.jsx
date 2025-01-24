@@ -4,7 +4,7 @@ import CurrentBalanceCard from '../../components/sections/Dashboard/CurrentBalan
 import SavingsCard from '../../components/sections/Dashboard/SavingsCard';
 import SpendingBreakdown from '../../components/sections/Dashboard/SpendingBreakdown';
 import BottomNavBar from '../../components/layouts/BottomNavbar';
-import LoadingSpinner from '../../components/common/LoadingSpinner'
+import LoadingSpinner from '../../components/common/LoadingSpinner';
 import { getUser, getBudgets, getTransactions, getSavingsGoals } from '../../services/api';
 import { getCurrencySymbol } from '../../utils/currencyUtils';
 
@@ -36,34 +36,12 @@ const Dashboard = () => {
     }
   };
 
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const userResponse = await getUser(token);
-        const budgetsResponse = await getBudgets(token);
-        const transactionsResponse = await getTransactions(token);
-        const savingsGoalsResponse = await getSavingsGoals(token);
-
-        setUser(userResponse.user);
-        setBudgets(budgetsResponse.budgets);
-        setTransactions(transactionsResponse.transactions);
-        setSavingsGoals(savingsGoalsResponse.savingsGoals);
-
-        if (userResponse.user) {
-          setCurrency(getCurrencySymbol(userResponse.user.preferredCurrency));
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
+    refreshDashboardData(); 
   }, []);
 
   if (!user) {
-    return <div><LoadingSpinner/></div>;
+    return <div><LoadingSpinner /></div>;
   }
 
   const totalIncome = user.monthlyIncome;

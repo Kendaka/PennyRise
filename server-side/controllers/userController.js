@@ -5,7 +5,6 @@ const Budget = require('../models/Budget');
 const Transaction = require('../models/Transaction');
 const User = require('../models/User');
 const SavingsGoal = require('../models/SavingsGoal');
-const passport = require('passport');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -51,26 +50,6 @@ const login = async (req, res) => {
   } catch (error) {
     res.status(401).json({ message: 'Invalid email or password', error: error.message });
   }
-};
-
-const googleOAuth = (req, res) => {
-  passport.authenticate('google', { scope: ['profile', 'email'] })(req, res);
-};
-
-const googleOAuthCallback = async (req, res) => {
-  passport.authenticate('google', { failureRedirect: '/login' }, async (err, user) => {
-    if (err || !user) {
-      return res.status(500).json({ message: 'Authentication failed', error: err });
-    }
-
-    try {
-      const newUser = await userService.registerOrUpdateGoogleUser(user);
-      const token = userService.generateToken(newUser);
-      res.status(200).json({ message: 'User logged in successfully', user: newUser, token });
-    } catch (error) {
-      res.status(500).json({ message: 'Error processing Google user', error: error.message });
-    }
-  })(req, res);
 };
 
 const updateIncomeAndCurrency = async (req, res) => {
@@ -170,7 +149,6 @@ const resetMonthlyData = async (req, res) => {
 
     const budgets = await Budget.findAll({ where: { userId } });
 
-    // Calculate the total remaining budget
     let totalRemaining = 0;
     for (const budget of budgets) {
       const remaining = budget.allocated - budget.spent;
@@ -198,8 +176,6 @@ const resetMonthlyData = async (req, res) => {
 module.exports = {
   register,
   login,
-  googleOAuth,
-  googleOAuthCallback,
   updateIncomeAndCurrency,
   updateProfile,
   updateProfilePicture,
