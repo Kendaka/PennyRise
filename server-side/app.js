@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const session = require('express-session');
 const userRoutes = require('./routes/userRoutes');
 const budgetRoutes = require('./routes/budgetRoutes'); 
@@ -24,6 +25,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/budgets', budgetRoutes); 
 app.use('/api/transactions', transactionRoutes); 
 app.use('/api/savings', savingsRoutes); 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 sequelize.authenticate()
   .then(() => {

@@ -8,6 +8,7 @@ import ChangePasswordForm from '../../components/sections/Profile/ChangePassword
 import BottomNavbar from '../../components/layouts/BottomNavbar';
 import SuccessModal from '../../components/common/SuccessModal';
 import ErrorModal from '../../components/common/ErrorModal';
+import ConfirmationModal from '../../components/common/ConfirmationModal';
 import { updateUserProfile, updateUserIncomeAndCurrency, updateUserProfilePicture, changeUserPassword, getBudgets, resetMonthlyData, getUser, getTransactions, getSavingsGoals } from '../../services/api';
 
 const Profile = () => {
@@ -25,6 +26,7 @@ const Profile = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [totalAllocated, setTotalAllocated] = useState(0);
   const [savingsGoals, setSavingsGoals] = useState([]); 
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -107,6 +109,10 @@ const Profile = () => {
   };
 
   const handleResetMonthlyData = async () => {
+    setShowConfirmationModal(true);
+  };
+
+  const handleConfirmReset = async () => {
     try {
       const token = localStorage.getItem('token');
       const response = await resetMonthlyData(token, { userId: user.id });
@@ -118,6 +124,8 @@ const Profile = () => {
       console.error('Error resetting monthly data:', error);
       setErrorMessage('Error resetting monthly data. Please try again.');
       setShowErrorModal(true);
+    } finally {
+      setShowConfirmationModal(false);
     }
   };
 
@@ -244,6 +252,13 @@ const Profile = () => {
         <ErrorModal
           message={errorMessage}
           onClose={handleCloseErrorModal}
+        />
+      )}
+      {showConfirmationModal && (
+        <ConfirmationModal
+          message="Are you sure you want to reset the monthly data?"
+          onConfirm={handleConfirmReset}
+          onCancel={() => setShowConfirmationModal(false)}
         />
       )}
     </div>
