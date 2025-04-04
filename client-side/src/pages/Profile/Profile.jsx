@@ -88,7 +88,7 @@ const Profile = () => {
       const response = await updateUserIncomeAndCurrency(token, { userId: user.id, monthlyIncome: user.monthlyIncome, preferredCurrency: currency.value });
       setUser(response.user);
       localStorage.setItem('user', JSON.stringify(response.user));
-      setSuccessMessage('Preferred currency updated successfully!');
+      setSuccessMessage('Preferredd currency updated successfully!');
       setShowSuccessModal(true);
     } catch (error) {
       console.error('Error updating preferred currency:', error);
