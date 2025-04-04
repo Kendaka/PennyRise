@@ -10,7 +10,7 @@ const ConfirmationModal = ({ message, onConfirm, onCancel }) => {
             onClick={onCancel}
             className="bg-gray-300 text-text px-4 py-2 rounded-md font-roboto"
           >
-            NO
+            No
           </button>
           <button
             onClick={onConfirm}
