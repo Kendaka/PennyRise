@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: pennyrise-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    restart: always
+
+  postgres:
+    image: postgres:15
+    container_name: pennyrise-db
+    environment:
+      POSTGRES_DB: PennyRise
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jahsehdwayneonfroy4
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pgdata:
+
