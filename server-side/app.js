@@ -13,7 +13,13 @@ require('./config/passport');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://prise-coral.vercel.app',
+  credentials: true, 
+};
+
+app.use(cors(corsOptions)); 
+
 app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,
