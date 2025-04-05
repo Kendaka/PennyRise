@@ -8,6 +8,6 @@ const sequelize = new Sequelize(process.env.DB_HOST, {
       rejectUnauthorized: false, 
     }
   }
-});
+})
 
 module.exports = sequelize;
