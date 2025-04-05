@@ -15,10 +15,8 @@ services:
   postgres:
     image: postgres:15
     container_name: pennyrise-db
-    environment:
-      POSTGRES_DB: PennyRise
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: jahsehdwayneonfroy4
+    env_file:
+      - .env
     ports:
       - "5432:5432"
     volumes:
