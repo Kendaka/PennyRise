@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://pennyrise.onrender.com'; 
+const API_URL = 'https://pennyrise.onrender.com/api'; 
 
 // User Authentication
 export const registerUser = async (userData) => {
