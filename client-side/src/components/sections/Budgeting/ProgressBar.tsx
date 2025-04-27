@@ -1,6 +1,11 @@
 import React from 'react';
 
-const ProgressBar = ({ value, color }) => {
+interface ProgressBarProps {
+  value: number;
+  color: 'accent' | 'blue'; // You can expand this if more colors are added later
+}
+
+const ProgressBar: React.FC<ProgressBarProps> = ({ value, color }) => {
   return (
     <div className="w-full bg-gray-200 rounded-full h-3">
       <div
