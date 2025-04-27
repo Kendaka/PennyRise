@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HomeIcon, ChartPieIcon, WalletIcon, UserIcon, BanknotesIcon } from '@heroicons/react/24/outline';
-import priseLogo from '../../assets/images/prise.png'; // Adjust the path as necessary
+import priseLogo from '../../assets/images/prise.png'; 
 
 // Define component type as React.FC with no props
 const BottomNavBar: React.FC = () => {
