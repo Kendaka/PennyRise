@@ -1,7 +1,13 @@
 import React from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 
-const ErrorModal = ({ message, onClose }) => {
+// Define prop types
+interface ErrorModalProps {
+  message: string;
+  onClose: () => void;
+}
+
+const ErrorModal: React.FC<ErrorModalProps> = ({ message, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-background p-6 rounded-md shadow-lg w-80">

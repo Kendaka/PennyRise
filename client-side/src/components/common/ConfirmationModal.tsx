@@ -1,6 +1,13 @@
 import React from 'react';
 
-const ConfirmationModal = ({ message, onConfirm, onCancel }) => {
+// Define prop types
+interface ConfirmationModalProps {
+  message: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+}
+
+const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ message, onConfirm, onCancel }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-background p-6 rounded-md shadow-lg w-72">
