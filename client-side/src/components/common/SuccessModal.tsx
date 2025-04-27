@@ -1,6 +1,12 @@
 import React from 'react';
 
-const SuccessModal = ({ message, onClose }) => {
+// Define prop types
+interface SuccessModalProps {
+  message: string;
+  onClose: () => void;
+}
+
+const SuccessModal: React.FC<SuccessModalProps> = ({ message, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-background p-6 rounded-md shadow-lg w-80">
