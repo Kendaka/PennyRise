@@ -1,19 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import categories from '../../../utils/categories';
-import { getUser } from '../../../services/api';
+
+interface Category {
+  name: string;
+  // Add other properties if your categories have more fields
+}
+
+interface BudgetData {
+  category: string;
+  allocated: number | string;
+  limit?: number;
+  spent?: number;
+}
 
 interface AddBudgetModalProps {
   onSave: (data: { category: string; limit: number }) => void;
   onClose: () => void;
-  initialData?: {
-    category: string;
-    limit: number;
-    allocated: number;
-    spent: number;
-  };
+  initialData?: BudgetData;
   existingBudgets: string[];
   remainingBalance: number;
 }
+
+// Assuming categories is an array of Category objects
+const categories: Category[] = [
+  { name: 'Food' },
+  { name: 'Transportation' },
+  { name: 'Entertainment' },
+  // Add other categories as needed
+];
 
 const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
   onSave,
@@ -22,14 +35,18 @@ const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
   existingBudgets,
   remainingBalance,
 }) => {
-  const [category, setCategory] = useState<string>(initialData?.category || categories[0].name);
-  const [limit, setLimit] = useState<string>(initialData?.limit.toString() || '');
+  const [category, setCategory] = useState<string>(
+    initialData?.category || categories[0].name
+  );
+  const [limit, setLimit] = useState<string | number>(
+    initialData?.allocated || ''
+  );
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
     if (initialData) {
       setCategory(initialData.category);
-      setLimit(initialData.allocated.toString());
+      setLimit(initialData.allocated);
     }
   }, [initialData]);
 
@@ -39,7 +56,14 @@ const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
       return;
     }
 
-    if (parseFloat(limit) > remainingBalance) {
+    const limitNumber = typeof limit === 'string' ? parseFloat(limit) : limit;
+
+    if (isNaN(limitNumber)) {
+      setError('Please enter a valid number');
+      return;
+    }
+
+    if (limitNumber > remainingBalance) {
       setError(`You only have: ${remainingBalance} remaining for adding budgets`);
       return;
     }
@@ -49,13 +73,13 @@ const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
       return;
     }
 
-    if (initialData && parseFloat(limit) < initialData.spent) {
+    if (initialData && limitNumber < (initialData.spent || 0)) {
       setError(`The budget limit cannot be less than the amount already spent (${initialData.spent}).`);
       return;
     }
 
     if (category && limit) {
-      onSave({ category, limit: parseFloat(limit) });
+      onSave({ category, limit: limitNumber });
       onClose();
     }
   };

@@ -4,41 +4,27 @@ import { FiTrash } from 'react-icons/fi';
 import ConfirmationModal from '../../common/ConfirmationModal';
 import { getCurrencySymbol } from '../../../utils/currencyUtils.js';
 
-interface Budget {
-  category: string;
-  allocated: number;
-  spent: number;
-}
-
-interface BudgetListProps {
-  budgets: Budget[];
-  onEdit: (budget: Budget) => void;
-  onDelete: (index: number) => void;
-}
-
-const BudgetList: React.FC<BudgetListProps> = ({ budgets, onEdit, onDelete }) => {
-  const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
-  const [budgetToDelete, setBudgetToDelete] = useState<number | null>(null);
-  const [currency, setCurrency] = useState<string>('$');
+const BudgetList = ({ budgets = [], onEdit, onDelete }) => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [budgetToDelete, setBudgetToDelete] = useState(null);
+  const [currency, setCurrency] = useState('$');
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       setCurrency(getCurrencySymbol(user.preferredCurrency));
     }
   }, []);
 
-  const handleDeleteClick = (index: number) => {
+  const handleDeleteClick = (index) => {
     setBudgetToDelete(index);
     setShowConfirmation(true);
   };
 
   const handleConfirmDelete = () => {
-    if (budgetToDelete !== null) {
-      onDelete(budgetToDelete);
-      setShowConfirmation(false);
-      setBudgetToDelete(null);
-    }
+    onDelete(budgetToDelete);
+    setShowConfirmation(false);
+    setBudgetToDelete(null);
   };
 
   const handleCancelDelete = () => {
@@ -76,7 +62,10 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onEdit, onDelete }) =>
               <p className="text-sm text-text font-roboto p-2">
                 Spent: {currency}{budget.spent} / {currency}{budget.allocated}
               </p>
-              <ProgressBar value={(budget.spent / budget.allocated) * 100} color="blue" />
+              <ProgressBar
+                value={(budget.spent / budget.allocated) * 100}
+                color="blue"
+              />
             </li>
           ))}
         </ul>
