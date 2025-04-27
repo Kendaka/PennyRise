@@ -5,7 +5,7 @@ import ProfileDetails from '../../components/sections/Profile/ProfileDetails';
 import MonthlyIncomeField from '../../components/sections/Profile/MonthlyIncomeField';
 import CurrencyField from '../../components/sections/Profile/CurrencyField';
 import ChangePasswordForm from '../../components/sections/Profile/ChangePassword';
-import BottomNavbar from '../../components/layouts/BottomNavbar';
+import BottomNavbar from '../../components/layouts/BottomNavbar.tsx';
 import SuccessModal from '../../components/common/SuccessModal';
 import ErrorModal from '../../components/common/ErrorModal';
 import ConfirmationModal from '../../components/common/ConfirmationModal';

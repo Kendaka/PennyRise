@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SavingsList from '../../components/sections/Savings/SavingsList';
 import AddSavingsGoalModal from '../../components/sections/Savings/AddSavingsGoalModal';
 import SavingsSummary from '../../components/sections/Savings/SavingsSummary';
-import BottomNavBar from '../../components/layouts/BottomNavbar';
+import BottomNavBar from '../../components/layouts/BottomNavbar.tsx';
 import { getSavingsGoals, createSavingsGoal, updateSavingsGoal, deleteSavingsGoal, getUser, getBudgets } from '../../services/api';
 
 const Savings = () => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TransactionList from '../../components/sections/Transactions/TransactionList';
 import AddTransactionModal from '../../components/sections/Transactions/AddTransactionModal';
 import TransactionSearch from '../../components/sections/Transactions/TransactionSearch';
-import BottomNavbar from '../../components/layouts/BottomNavbar';
+import BottomNavbar from '../../components/layouts/BottomNavbar.tsx';
 import ErrorModal from '../../components/common/ErrorModal';
 import { getTransactions, createTransaction, deleteTransaction, getBudgets } from '../../services/api';
 

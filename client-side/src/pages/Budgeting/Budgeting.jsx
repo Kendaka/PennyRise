@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BudgetList from '../../components/sections/Budgeting/BudgetList';
 import AddBudgetModal from '../../components/sections/Budgeting/AddBudgetModal';
-import BottomNavbar from '../../components/layouts/BottomNavbar';
+import BottomNavbar from '../../components/layouts/BottomNavbar.tsx';
 import ErrorModal from '../../components/common/ErrorModal';
 import { getBudgets, createBudget, updateBudget, deleteBudget, getUser, getSavingsGoals } from '../../services/api';
 

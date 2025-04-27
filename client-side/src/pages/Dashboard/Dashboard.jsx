@@ -3,7 +3,7 @@ import DashboardHeader from '../../components/sections/Dashboard/DashboardHeader
 import CurrentBalanceCard from '../../components/sections/Dashboard/CurrentBalanceCard';
 import SavingsCard from '../../components/sections/Dashboard/SavingsCard';
 import SpendingBreakdown from '../../components/sections/Dashboard/SpendingBreakdown';
-import BottomNavBar from '../../components/layouts/BottomNavbar';
+import BottomNavBar from '../../components/layouts/BottomNavbar.tsx';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
 import { getUser, getBudgets, getTransactions, getSavingsGoals } from '../../services/api';
 import { getCurrencySymbol } from '../../utils/currencyUtils';
