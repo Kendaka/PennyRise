@@ -3,7 +3,7 @@ import heroImage from "../../../assets/images/icon.png";
 import SlidingButton from "../../common/SlidingButton";
 import { useNavigate } from "react-router-dom";
 
-const Hero = () => {
+const Hero: React.FC = () => {
     const navigate = useNavigate();
     
     return (
@@ -24,7 +24,7 @@ const Hero = () => {
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
 export default Hero;
