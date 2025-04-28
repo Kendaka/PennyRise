@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
 import { currencyOptions } from '../../../utils/currencyOptions';
 
+interface CurrencyOption {
+  value: string;
+  label: string;
+}
+
 interface CurrencyFieldProps {
-  onSave: (currency: { value: string; label: string }) => void;
+  onSave: (currency: CurrencyOption) => void;
 }
 
 const CurrencyField: React.FC<CurrencyFieldProps> = ({ onSave }) => {
-  const [selectedCurrency, setSelectedCurrency] = useState(currencyOptions[0]);
+  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyOption>(currencyOptions[0]);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -21,12 +26,18 @@ const CurrencyField: React.FC<CurrencyFieldProps> = ({ onSave }) => {
     onSave(selectedCurrency);
   };
 
+  const handleCurrencyChange = (newValue: SingleValue<CurrencyOption>) => {
+    if (newValue) {
+      setSelectedCurrency(newValue);
+    }
+  };
+
   return (
     <div className="bg-background p-4 rounded-md shadow-md mt-2">
       <h3 className="text-lg text-text font-montserrat font-bold mb-4">Preferred Currency</h3>
       <Select
         value={selectedCurrency}
-        onChange={setSelectedCurrency}
+        onChange={handleCurrencyChange}
         options={currencyOptions}
         className="mb-4"
       />
