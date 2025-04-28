@@ -9,7 +9,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ value, color }) => {
   return (
     <div className="w-full bg-gray-200 rounded-full h-3">
       <div
-        className={`h-full rounded-full ${color === 'accent' ? 'bg-accent' : 'bg-blue-500'}`} // default to 'bg-blue-500' if not 'accent'
+        className={`h-full rounded-full ${color === 'accent' ? 'bg-accent' : 'bg-blue-500'}`} 
         style={{
           width: `${value}%`,
         }}
