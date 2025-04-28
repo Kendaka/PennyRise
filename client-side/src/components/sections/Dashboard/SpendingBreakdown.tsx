@@ -1,13 +1,30 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
-const SpendingBreakdown = ({ transactions, budgets, currency }) => {
-  const budgetMap = budgets.reduce((acc, budget) => {
+interface Transaction {
+  type: string;
+  category: string;
+  amount: number;
+}
+
+interface Budget {
+  category: string;
+  allocated: number;
+}
+
+interface SpendingBreakdownProps {
+  transactions: Transaction[];
+  budgets: Budget[];
+  currency: string;
+}
+
+const SpendingBreakdown: React.FC<SpendingBreakdownProps> = ({ transactions, budgets, currency }) => {
+  const budgetMap = budgets.reduce<Record<string, number>>((acc, budget) => {
     acc[budget.category] = budget.allocated;
     return acc;
   }, {});
 
-  const expenseMap = transactions.reduce((acc, transaction) => {
+  const expenseMap = transactions.reduce<Record<string, number>>((acc, transaction) => {
     if (transaction.type === 'expense') {
       if (!acc[transaction.category]) {
         acc[transaction.category] = 0;
@@ -69,14 +86,13 @@ const SpendingBreakdown = ({ transactions, budgets, currency }) => {
             ))}
           </div>
         </div>
-        <PieChart width={300} height={300} className="md:w-400 md:h-400 lg:w-500 lg:h-500 xl:w-600 xl:h-600">
+        <PieChart width={300} height={300}>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
             labelLine={false}
             outerRadius={100}
-            className="md:outerRadius-150 lg:outerRadius-200 xl:outerRadius-250"
             fill="#8884d8"
             dataKey="value"
           >

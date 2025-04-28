@@ -1,6 +1,13 @@
 import React from 'react';
 
-const SavingsCard = ({ totalSaved, totalTarget, progressPercentage, currency }) => {
+interface SavingsCardProps {
+  totalSaved: number;
+  totalTarget: number;
+  progressPercentage: number;
+  currency: string;
+}
+
+const SavingsCard: React.FC<SavingsCardProps> = ({ totalSaved, totalTarget, progressPercentage, currency }) => {
   return (
     <div className="p-4 bg-background rounded-md shadow-lg">
       <p className="text-sm text-text font-bold font-montserrat">Your Total Savings</p>
