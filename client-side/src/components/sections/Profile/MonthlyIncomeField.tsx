@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const MonthlyIncomeField = ({ initialIncome, onSave }) => {
+interface MonthlyIncomeFieldProps {
+  initialIncome: number;
+  onSave: (income: number) => void;
+}
+
+const MonthlyIncomeField: React.FC<MonthlyIncomeFieldProps> = ({ initialIncome, onSave }) => {
   const [monthlyIncome, setMonthlyIncome] = useState(initialIncome);
 
   useEffect(() => {
@@ -17,7 +22,7 @@ const MonthlyIncomeField = ({ initialIncome, onSave }) => {
       <input
         type="number"
         value={monthlyIncome}
-        onChange={(e) => setMonthlyIncome(e.target.value)}
+        onChange={(e) => setMonthlyIncome(Number(e.target.value))}
         className="py-3 px-4 mb-3 w-full md:w-80 bg-background text-[#333333] placeholder-[#777777] border border-secondary rounded-md focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
       />
       <div className="flex justify-end mt-2">
