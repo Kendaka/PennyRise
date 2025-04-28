@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { currencyOptions } from '../../../utils/currencyOptions';
 
-const CurrencyField = ({ onSave }) => {
+interface CurrencyFieldProps {
+  onSave: (currency: { value: string; label: string }) => void;
+}
+
+const CurrencyField: React.FC<CurrencyFieldProps> = ({ onSave }) => {
   const [selectedCurrency, setSelectedCurrency] = useState(currencyOptions[0]);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
     if (user) {
       const userCurrency = currencyOptions.find(option => option.value === user.preferredCurrency);
       setSelectedCurrency(userCurrency || currencyOptions[0]);

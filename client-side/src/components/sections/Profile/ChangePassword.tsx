@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-const ChangePasswordForm = ({ onChangePassword }) => {
+interface ChangePasswordFormProps {
+  onChangePassword: (passwords: { currentPassword: string; newPassword: string }) => void;
+}
+
+const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({ onChangePassword }) => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
