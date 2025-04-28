@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import DefaultProfile from '../../../assets/images/defaultProfilePic.png';
 
-const ProfileHeader = ({ user, onChangeImage, onDeleteImage }) => {
-  const [profilePicture, setProfilePicture] = useState(DefaultProfile);
+interface User {
+  profilePicture?: string;
+}
+
+interface ProfileHeaderProps {
+  user: User;
+  onChangeImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onDeleteImage: () => Promise<void>;
+}
+
+const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, onChangeImage, onDeleteImage }) => {
+  const [profilePicture, setProfilePicture] = useState<string>(DefaultProfile);
 
   useEffect(() => {
     if (user.profilePicture) {

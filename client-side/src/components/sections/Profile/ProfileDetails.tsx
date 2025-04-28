@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 
-const ProfileDetails = ({ user, onUpdate }) => {
-  const [name, setName] = useState(user.username || '');
+interface User {
+  username: string;
+  email: string;
+}
+
+interface ProfileDetailsProps {
+  user: User;
+  onUpdate: (updatedUser: { username: string }) => void;
+}
+
+const ProfileDetails: React.FC<ProfileDetailsProps> = ({ user, onUpdate }) => {
+  const [name, setName] = useState<string>(user.username || '');
 
   const handleSave = () => {
     if (name.trim()) {
