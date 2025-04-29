@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { requestPasswordReset } from '../../services/api'; 
+import { requestPasswordReset } from '../../services/api';
 
-const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+const ForgotPassword: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<string>('');
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
