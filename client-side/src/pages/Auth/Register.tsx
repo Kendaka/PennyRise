@@ -1,59 +1,75 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import priseLogo from "../../assets/images/prise.png";
 import SuccessModal from '../../components/common/SuccessModal';
 import ErrorModal from '../../components/common/ErrorModal';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
-import { registerUser } from '../../services/api'; 
+import { registerUser } from '../../services/api';
 
-const Registration = () => {
-  const [formData, setFormData] = useState({
+// Types for the form data and error state
+interface FormData {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+interface Errors {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+const Registration: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
 
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<Errors>({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
 
-  const [serverError, setServerError] = useState("");
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showErrorModal, setShowErrorModal] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState<string>("");
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState<boolean>(false);
+  const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
+  const [showErrorModal, setShowErrorModal] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const navigate = useNavigate(); 
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" }); 
+    setErrors({ ...errors, [name]: "" });
     setServerError("");
   };
 
-  const togglePasswordVisibility = () => {
+  const togglePasswordVisibility = (): void => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const toggleConfirmPasswordVisibility = () => {
+  const toggleConfirmPasswordVisibility = (): void => {
     setConfirmPasswordVisible(!confirmPasswordVisible);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     let hasError = false;
-    const newErrors = {};
-  
+    const newErrors: Errors = { username: "", email: "", password: "", confirmPassword: "" };
+
     if (!formData.username.trim()) {
       newErrors.username = "Username is required.";
       hasError = true;
     }
-  
+
     if (!formData.email.trim()) {
       newErrors.email = "Email is required.";
       hasError = true;
@@ -61,7 +77,7 @@ const Registration = () => {
       newErrors.email = "Invalid email address.";
       hasError = true;
     }
-  
+
     if (!formData.password) {
       newErrors.password = "Password is required.";
       hasError = true;
@@ -69,7 +85,7 @@ const Registration = () => {
       newErrors.password = "Password must be at least 8 characters.";
       hasError = true;
     }
-  
+
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = "Confirm your password.";
       hasError = true;
@@ -77,34 +93,34 @@ const Registration = () => {
       newErrors.confirmPassword = "Passwords do not match.";
       hasError = true;
     }
-  
+
     setErrors(newErrors);
-  
+
     if (hasError) {
       setShowErrorModal(true);
       return;
     }
-  
+
     try {
       setLoading(true);
-      await registerUser(formData); 
+      await registerUser(formData);
       setLoading(false);
       setShowSuccessModal(true);
-    } catch (error) {
+    } catch (error: any) {
       setLoading(false);
-      console.error('Registration error:', error); 
+      console.error('Registration error:', error);
       const errorMessage = error.response?.data?.message || 'An unexpected error occurred';
       setServerError(errorMessage);
       setShowErrorModal(true);
     }
   };
 
-  const handleCloseSuccessModal = () => {
+  const handleCloseSuccessModal = (): void => {
     setShowSuccessModal(false);
-    navigate('/login'); 
+    navigate('/login');
   };
 
-  const handleCloseErrorModal = () => {
+  const handleCloseErrorModal = (): void => {
     setShowErrorModal(false);
   };
 
