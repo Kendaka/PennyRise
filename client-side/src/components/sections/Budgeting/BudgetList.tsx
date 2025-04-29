@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import { FiTrash } from 'react-icons/fi';
 import ConfirmationModal from '../../common/ConfirmationModal';
-import { getCurrencySymbol } from '../../../utils/currencyUtils.js';
+import { getCurrencySymbol } from '../../../utils/currencyUtils';
 
 interface Budget {
+  id: string; // Add this line
   category: string;
   allocated: number;
   spent: number;
@@ -14,17 +15,17 @@ interface BudgetListProps {
   budgets: Budget[];
   onEdit: (budget: Budget) => void;
   onDelete: (index: number) => void;
+  currency: string;
 }
 
-const BudgetList: React.FC<BudgetListProps> = ({ budgets, onEdit, onDelete }) => {
+const BudgetList: React.FC<BudgetListProps> = ({ budgets, onEdit, onDelete, currency }) => {
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const [budgetToDelete, setBudgetToDelete] = useState<number | null>(null);
-  const [currency, setCurrency] = useState<string>('$');
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     if (user) {
-      setCurrency(getCurrencySymbol(user.preferredCurrency));
+      currency = getCurrencySymbol(user.preferredCurrency);
     }
   }, []);
 
@@ -54,7 +55,7 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onEdit, onDelete }) =>
       ) : (
         <ul>
           {budgets.map((budget, index) => (
-            <li key={index} className="mb-3">
+            <li key={budget.id} className="mb-3"> {/* Use budget.id as key */}
               <div className="flex justify-between items-center">
                 <p className="font-bold">{budget.category}</p>
                 <div className="flex items-center space-x-4">
