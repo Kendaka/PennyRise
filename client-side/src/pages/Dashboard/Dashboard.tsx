@@ -3,21 +3,53 @@ import DashboardHeader from '../../components/sections/Dashboard/DashboardHeader
 import CurrentBalanceCard from '../../components/sections/Dashboard/CurrentBalanceCard';
 import SavingsCard from '../../components/sections/Dashboard/SavingsCard';
 import SpendingBreakdown from '../../components/sections/Dashboard/SpendingBreakdown';
-import BottomNavBar from '../../components/layouts/BottomNavbar.tsx';
+import BottomNavBar from '../../components/layouts/BottomNavbar';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
 import { getUser, getBudgets, getTransactions, getSavingsGoals } from '../../services/api';
 import { getCurrencySymbol } from '../../utils/currencyUtils';
 
-const Dashboard = () => {
-  const [transactions, setTransactions] = useState([]);
-  const [budgets, setBudgets] = useState([]);
-  const [savingsGoals, setSavingsGoals] = useState([]);
-  const [user, setUser] = useState(null);
-  const [currency, setCurrency] = useState('$');
+// Type definitions
+interface Transaction {
+  id: string;
+  amount: number;
+  category: string;
+  date: string;
+  description?: string;
+  type: string;
+}
+
+interface Budget {
+  id: string;
+  category: string;
+  allocated: number;
+}
+
+interface SavingsGoal {
+  id: string;
+  name: string;
+  target: number;
+  saved: number;
+}
+
+interface User {
+  id: string;
+  username: string;
+  email: string;
+  monthlyIncome: number;
+  preferredCurrency: string;
+}
+
+const Dashboard: React.FC = () => {
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [budgets, setBudgets] = useState<Budget[]>([]);
+  const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+  const [currency, setCurrency] = useState<string>('$');
 
   const refreshDashboardData = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('token') || '';
+
       const userResponse = await getUser(token);
       const budgetsResponse = await getBudgets(token);
       const transactionsResponse = await getTransactions(token);
@@ -37,11 +69,15 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    refreshDashboardData(); 
+    refreshDashboardData();
   }, []);
 
   if (!user) {
-    return <div><LoadingSpinner /></div>;
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   const totalIncome = user.monthlyIncome;
@@ -77,7 +113,11 @@ const Dashboard = () => {
             />
           </div>
           <div className="flex flex-col justify-start mt-2">
-            <SpendingBreakdown transactions={transactions} budgets={budgets} currency={currency} />
+            <SpendingBreakdown
+              transactions={transactions}
+              budgets={budgets}
+              currency={currency}
+            />
           </div>
         </div>
       </main>
