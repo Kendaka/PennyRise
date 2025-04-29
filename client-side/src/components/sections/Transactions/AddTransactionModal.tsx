@@ -1,12 +1,32 @@
 import React, { useState } from 'react';
 import categories from '../../../utils/categories';
 
-const AddTransactionModal = ({ onAdd, onClose, budgets }) => {
-  const [name, setName] = useState('');
-  const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState(categories[0].name);
-  const [date, setDate] = useState('');
-  const [error, setError] = useState('');
+interface Budget {
+  category: string;
+  allocated: number;
+  spent: number;
+}
+
+interface Transaction {
+  name: string;
+  amount: number;
+  type: 'expense';
+  category: string;
+  date: string;
+}
+
+interface AddTransactionModalProps {
+  onAdd: (transaction: Transaction) => void;
+  onClose: () => void;
+  budgets: Budget[];
+}
+
+const AddTransactionModal: React.FC<AddTransactionModalProps> = ({ onAdd, onClose, budgets }) => {
+  const [name, setName] = useState<string>('');
+  const [amount, setAmount] = useState<string>('');
+  const [category, setCategory] = useState<string>(categories[0].name);
+  const [date, setDate] = useState<string>('');
+  const [error, setError] = useState<string>('');
 
   const handleSubmit = () => {
     const budget = budgets.find(b => b.category === category);
@@ -15,7 +35,8 @@ const AddTransactionModal = ({ onAdd, onClose, budgets }) => {
       return;
     }
 
-    if (budget.spent + parseFloat(amount) > budget.allocated) {
+    const parsedAmount = parseFloat(amount);
+    if (budget.spent + parsedAmount > budget.allocated) {
       setError(`Not enough budget remaining for category: ${category}`);
       return;
     }
@@ -23,7 +44,7 @@ const AddTransactionModal = ({ onAdd, onClose, budgets }) => {
     if (name && amount && category && date) {
       onAdd({
         name,
-        amount: parseFloat(amount),
+        amount: parsedAmount,
         type: 'expense',
         category,
         date,
@@ -36,7 +57,7 @@ const AddTransactionModal = ({ onAdd, onClose, budgets }) => {
     <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
       <div className="bg-background p-6 rounded-md shadow-lg w-96">
         <h3 className="text-lg text-text font-bold font-montserrat mb-4">Add Transaction</h3>
-        
+
         <input
           type="text"
           placeholder="Transaction Name"
