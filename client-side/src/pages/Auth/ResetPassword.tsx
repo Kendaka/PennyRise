@@ -3,13 +3,15 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import priseLogo from "../../assets/images/prise.png";
 import { resetPassword } from '../../services/api'; 
 
-const ResetPassword = () => {
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [newPasswordVisible, setNewPasswordVisible] = useState(false);
-  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+interface ResetPasswordProps {}
+
+const ResetPassword: React.FC<ResetPasswordProps> = () => {
+  const [newPassword, setNewPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [newPasswordVisible, setNewPasswordVisible] = useState<boolean>(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<string>('');
   const navigate = useNavigate();
   const location = useLocation();
   const token = new URLSearchParams(location.search).get('token'); 
@@ -22,7 +24,7 @@ const ResetPassword = () => {
     setConfirmPasswordVisible(!confirmPasswordVisible);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setSuccess('');
@@ -38,10 +40,14 @@ const ResetPassword = () => {
     }
 
     try {
-      await resetPassword(token, newPassword);
-      setSuccess('Password reset successful!');
-      setError('');
-      navigate('/login');
+      if (token) {
+        await resetPassword(token, newPassword);
+        setSuccess('Password reset successful!');
+        setError('');
+        navigate('/login');
+      } else {
+        setError('Invalid token.');
+      }
     } catch (error) {
       setError('Error resetting password. Please try again.');
       setSuccess('');
