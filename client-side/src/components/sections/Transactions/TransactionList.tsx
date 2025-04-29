@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import ConfirmationModal from '../../common/ConfirmationModal';
-import { getCurrencySymbol } from '../../../utils/currencyUtils.js';
+import { getCurrencySymbol } from '../../../utils/currencyUtils';
 
+interface Transaction {
+  name: string;
+  amount: number;
+  type: 'income' | 'expense';
+  category: string;
+  date: string;
+}
 
-const TransactionList = ({ transactions, onDelete }) => {
-  const [showAll, setShowAll] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [transactionToDelete, setTransactionToDelete] = useState(null);
-  const [currency, setCurrency] = useState('$');
+interface TransactionListProps {
+  transactions: Transaction[];
+  onDelete: (index: number) => void;
+}
+
+const TransactionList: React.FC<TransactionListProps> = ({ transactions, onDelete }) => {
+  const [showAll, setShowAll] = useState<boolean>(false);
+  const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
+  const [transactionToDelete, setTransactionToDelete] = useState<number | null>(null);
+  const [currency, setCurrency] = useState<string>('$');
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
     if (user) {
       setCurrency(getCurrencySymbol(user.preferredCurrency));
     }
@@ -20,13 +32,15 @@ const TransactionList = ({ transactions, onDelete }) => {
   const maxTransactionsToShow = 8;
   const visibleTransactions = showAll ? transactions : transactions.slice(0, maxTransactionsToShow);
 
-  const handleDeleteClick = (index) => {
+  const handleDeleteClick = (index: number) => {
     setTransactionToDelete(index);
     setShowConfirmation(true);
   };
 
   const handleConfirmDelete = () => {
-    onDelete(transactionToDelete);
+    if (transactionToDelete !== null) {
+      onDelete(transactionToDelete);
+    }
     setShowConfirmation(false);
     setTransactionToDelete(null);
   };
