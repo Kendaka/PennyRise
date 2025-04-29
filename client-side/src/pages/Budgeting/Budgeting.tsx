@@ -5,22 +5,37 @@ import BottomNavbar from '../../components/layouts/BottomNavbar.tsx';
 import ErrorModal from '../../components/common/ErrorModal';
 import { getBudgets, createBudget, updateBudget, deleteBudget, getUser, getSavingsGoals } from '../../services/api';
 
-const Budgeting = () => {
-  const [budgets, setBudgets] = useState([]);
-  const [savingsGoals, setSavingsGoals] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentBudget, setCurrentBudget] = useState(null);
-  const [token, setToken] = useState('');
-  const [showErrorModal, setShowErrorModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [remainingBalance, setRemainingBalance] = useState(0);
+interface Budget {
+  id: string;
+  category: string;
+  allocated: number;
+}
+
+interface SavingsGoal {
+  id: string;
+  saved: number;
+}
+
+interface User {
+  monthlyIncome: number;
+}
+
+const Budgeting: React.FC = () => {
+  const [budgets, setBudgets] = useState<Budget[]>([]);
+  const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [currentBudget, setCurrentBudget] = useState<Budget | null>(null);
+  const [token, setToken] = useState<string>('');
+  const [showErrorModal, setShowErrorModal] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [remainingBalance, setRemainingBalance] = useState<number>(0);
 
   useEffect(() => {
     const fetchBudgets = async () => {
       try {
         const token = localStorage.getItem('token');
-        setToken(token);
-        const response = await getBudgets(token);
+        setToken(token || '');
+        const response = await getBudgets(token || '');
         setBudgets(response.budgets || []);
       } catch (error) {
         console.error('Error fetching budgets:', error);
@@ -34,7 +49,7 @@ const Budgeting = () => {
     const fetchSavingsGoals = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await getSavingsGoals(token);
+        const response = await getSavingsGoals(token || '');
         setSavingsGoals(response.savingsGoals || []);
       } catch (error) {
         console.error('Error fetching savings goals:', error);
@@ -48,8 +63,8 @@ const Budgeting = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await getUser(token);
-        const user = response.user;
+        const response = await getUser(token || '');
+        const user: User = response.user;
         const totalAllocated = budgets.reduce((sum, budget) => sum + budget.allocated, 0);
         const totalSaved = savingsGoals.reduce((sum, goal) => sum + goal.saved, 0);
         setRemainingBalance(user.monthlyIncome - totalAllocated - totalSaved);
@@ -61,13 +76,13 @@ const Budgeting = () => {
     fetchUserData();
   }, [budgets, savingsGoals]);
 
-  const handleSaveBudget = async (budget) => {
+  const handleSaveBudget = async (budget: Budget) => {
     try {
       if (currentBudget) {
-        const response = await updateBudget(token, { budgetId: currentBudget.id, allocated: budget.limit });
+        const response = await updateBudget(token, { budgetId: currentBudget.id, allocated: budget.allocated });
         setBudgets(budgets.map((b) => (b.id === currentBudget.id ? response.budget : b)));
       } else {
-        const response = await createBudget(token, { category: budget.category, allocated: budget.limit });
+        const response = await createBudget(token, { category: budget.category, allocated: budget.allocated });
         setBudgets([...budgets, response.budget]);
       }
       setIsModalOpen(false);
@@ -79,12 +94,12 @@ const Budgeting = () => {
     }
   };
 
-  const handleEditBudget = (budget) => {
+  const handleEditBudget = (budget: Budget) => {
     setCurrentBudget(budget);
     setIsModalOpen(true);
   };
 
-  const handleDeleteBudget = async (index) => {
+  const handleDeleteBudget = async (index: number) => {
     try {
       const budgetId = budgets[index].id;
       await deleteBudget(token, budgetId);
@@ -101,7 +116,7 @@ const Budgeting = () => {
   return (
     <div>
       <div className="min-h-screen bg-background flex flex-col">
-        <BottomNavbar/>
+        <BottomNavbar />
         <main className="flex-grow p-4 space-y-4 pb-20">
           <h1 className="text-xl text-text font-montserrat font-bold mb-4">Budgeting</h1>
           <BudgetList budgets={budgets} onEdit={handleEditBudget} onDelete={handleDeleteBudget} currency="$" />
