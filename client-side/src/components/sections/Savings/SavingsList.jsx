@@ -4,27 +4,41 @@ import { FiTrash } from 'react-icons/fi';
 import ConfirmationModal from '../../common/ConfirmationModal';
 import { getCurrencySymbol } from '../../../utils/currencyUtils.js';
 
-const SavingsList = ({ savingsGoals, onEdit, onDelete }) => {
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [goalToDelete, setGoalToDelete] = useState(null);
-  const [currency, setCurrency] = useState('$');
+interface SavingsGoal {
+  name: string;
+  saved: number;
+  target: number;
+}
+
+interface SavingsListProps {
+  savingsGoals: SavingsGoal[];
+  onEdit: (goal: SavingsGoal) => void;
+  onDelete: (index: number) => void;
+}
+
+const SavingsList: React.FC<SavingsListProps> = ({ savingsGoals, onEdit, onDelete }) => {
+  const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
+  const [goalToDelete, setGoalToDelete] = useState<number | null>(null);
+  const [currency, setCurrency] = useState<string>('$');
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    if (user && user.preferredCurrency) {
       setCurrency(getCurrencySymbol(user.preferredCurrency));
     }
   }, []);
 
-  const handleDeleteClick = (index) => {
+  const handleDeleteClick = (index: number) => {
     setGoalToDelete(index);
     setShowConfirmation(true);
   };
 
   const handleConfirmDelete = () => {
-    onDelete(goalToDelete);
-    setShowConfirmation(false);
-    setGoalToDelete(null);
+    if (goalToDelete !== null) {
+      onDelete(goalToDelete);
+      setShowConfirmation(false);
+      setGoalToDelete(null);
+    }
   };
 
   const handleCancelDelete = () => {
@@ -36,7 +50,9 @@ const SavingsList = ({ savingsGoals, onEdit, onDelete }) => {
     <div className="bg-background p-4 rounded-md shadow-md mb-20">
       <h2 className="text-lg text-text font-bold font-montserrat mb-4">Your Savings Goals</h2>
       {savingsGoals.length === 0 ? (
-        <p className="text-textLight font-bold font-roboto">No savings goals yet. Start adding one!</p>
+        <p className="text-textLight font-bold font-roboto">
+          No savings goals yet. Start adding one!
+        </p>
       ) : (
         <ul>
           {savingsGoals.map((goal, index) => (
@@ -60,12 +76,11 @@ const SavingsList = ({ savingsGoals, onEdit, onDelete }) => {
                 </div>
               </div>
               <p className="text-sm text-textLight mb-2">
-                Saved: {currency}{goal.saved} / {currency}{goal.target}
+                Saved: {currency}
+                {goal.saved} / {currency}
+                {goal.target}
               </p>
-              <ProgressBar
-                value={(goal.saved / goal.target) * 100}
-                color='accent'
-              />
+              <ProgressBar value={(goal.saved / goal.target) * 100} color="accent" />
             </li>
           ))}
         </ul>

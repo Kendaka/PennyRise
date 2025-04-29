@@ -1,10 +1,28 @@
 import React, { useState } from 'react';
 
-const AddSavingsGoalModal = ({ onSave, onClose, initialData, remainingBalance }) => {
-  const [name, setName] = useState(initialData?.name || '');
-  const [target, setTarget] = useState(initialData?.target || '');
-  const [saved, setSaved] = useState(initialData?.saved || '');
-  const [error, setError] = useState('');
+interface SavingsGoalData {
+  name: string;
+  target: number;
+  saved: number;
+}
+
+interface AddSavingsGoalModalProps {
+  onSave: (goal: SavingsGoalData) => void;
+  onClose: () => void;
+  initialData?: SavingsGoalData;
+  remainingBalance: number;
+}
+
+const AddSavingsGoalModal: React.FC<AddSavingsGoalModalProps> = ({
+  onSave,
+  onClose,
+  initialData,
+  remainingBalance
+}) => {
+  const [name, setName] = useState<string>(initialData?.name || '');
+  const [target, setTarget] = useState<string>(initialData?.target?.toString() || '');
+  const [saved, setSaved] = useState<string>(initialData?.saved?.toString() || '');
+  const [error, setError] = useState<string>('');
 
   const handleSubmit = () => {
     const savedAmount = parseFloat(saved) || 0;
@@ -34,6 +52,7 @@ const AddSavingsGoalModal = ({ onSave, onClose, initialData, remainingBalance })
         <h3 className="text-lg tex-text font-bold font-montserrat mb-4">
           {initialData ? 'Edit Goal' : 'Add Goal'}
         </h3>
+
         <label className="block mb-2 text-textLight font-bold font-montserrat">Goal Name</label>
         <input
           type="text"
@@ -57,13 +76,17 @@ const AddSavingsGoalModal = ({ onSave, onClose, initialData, remainingBalance })
           onChange={(e) => setSaved(e.target.value)}
           className="py-3 px-4 mb-3 w-80 bg-background text-[#333333] placeholder-[#777777] border border-secondary rounded-md focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
         />
+
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 
         <div className="flex justify-end">
           <button onClick={onClose} className="mr-4 text-textLight font-roboto">
             Cancel
           </button>
-          <button onClick={handleSubmit} className="bg-secondary text-background font-roboto px-4 py-2 rounded-md">
+          <button
+            onClick={handleSubmit}
+            className="bg-secondary text-background font-roboto px-4 py-2 rounded-md"
+          >
             Save
           </button>
         </div>
