@@ -1,27 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import priseLogo from "../../assets/images/prise.png";
 import ErrorModal from '../../components/common/ErrorModal';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
-import { loginUser } from '../../services/api'; 
+import { loginUser } from '../../services/api';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [error, setError] = useState('');
-  const [showErrorModal, setShowErrorModal] = useState(false);
-  const [loading, setLoading] = useState(false);
+// Define types for the state
+interface UserResponse {
+  token: string;
+  user: {
+    monthlyIncome: number | null;
+    preferredCurrency: string | null;
+    onboardingCompleted: boolean;
+  };
+}
 
-  const navigate = useNavigate(); 
+const Login: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const [showErrorModal, setShowErrorModal] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
-  
 
     if (!email) {
       setError('Email is required.');
@@ -40,26 +50,27 @@ const Login = () => {
     }
 
     try {
-      setLoading(true); 
-      const response = await loginUser({ email, password });
+      setLoading(true);
+      const response: UserResponse = await loginUser({ email, password });
       setLoading(false);
       localStorage.setItem('token', response.token);
       localStorage.setItem('user', JSON.stringify(response.user));
+
       if (!response.user.monthlyIncome || !response.user.preferredCurrency) {
         navigate('/onboarding');
       } else {
         navigate('/dashboard');
       }
-      
+
       if (!response.user.onboardingCompleted) {
         navigate('/onboarding');
       } else {
         navigate('/dashboard');
       }
     } catch (error) {
-      setLoading(false); 
-      console.error('Login error:', error); 
-      const errorMessage = error.response?.data?.message || 'An unexpected error occurred';
+      setLoading(false);
+      console.error('Login error:', error);
+      const errorMessage = (error as { response?: { data?: { message: string } } }).response?.data?.message || 'An unexpected error occurred';
       setError(errorMessage);
       setShowErrorModal(true);
     }
@@ -71,7 +82,7 @@ const Login = () => {
 
   return (
     <section className="min-h-screen bg-background flex flex-col justify-center items-center">
-      <img 
+      <img
         src={priseLogo}
         alt="Prise Logo"
         className="w-36 py-6"
@@ -81,20 +92,20 @@ const Login = () => {
       </h1>
 
       <form className="flex flex-col gap-5 items-center py-3" onSubmit={handleLogin}>
-        <input 
-          type="text" 
+        <input
+          type="text"
           placeholder="Email address"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           className="py-3 px-4 mb-3 w-80 bg-background text-text placeholder-[#777777] border border-secondary rounded-md focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
         />
-        
+
         <div className="relative w-80">
           <input
             type={passwordVisible ? "text" : "password"}
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
             className="py-3 px-4 w-full bg-background text-text placeholder-[#777777] border border-secondary rounded-md focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
           />
           <button
@@ -122,8 +133,8 @@ const Login = () => {
           </button>
           <p className="text-text text-md font-roboto px-2">
             Don't have an account?{" "}
-            <Link 
-              to="/register" 
+            <Link
+              to="/register"
               className="font-semibold text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary"
             >
               Sign up
