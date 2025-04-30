@@ -2,22 +2,55 @@ import React, { useState, useEffect } from 'react';
 import SavingsList from '../../components/sections/Savings/SavingsList';
 import AddSavingsGoalModal from '../../components/sections/Savings/AddSavingsGoalModal';
 import SavingsSummary from '../../components/sections/Savings/SavingsSummary';
-import BottomNavBar from '../../components/layouts/BottomNavbar.tsx';
-import { getSavingsGoals, createSavingsGoal, updateSavingsGoal, deleteSavingsGoal, getUser, getBudgets } from '../../services/api';
+import BottomNavBar from '../../components/layouts/BottomNavbar';
+import {
+  getSavingsGoals,
+  createSavingsGoal,
+  updateSavingsGoal,
+  deleteSavingsGoal,
+  getUser,
+  getBudgets,
+} from '../../services/api';
 
-const Savings = () => {
-  const [savingsGoals, setSavingsGoals] = useState([]);
-  const [budgets, setBudgets] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentGoal, setCurrentGoal] = useState(null);
-  const [remainingBalance, setRemainingBalance] = useState(0);
-  const [token, setToken] = useState('');
-  const [achievementModal, setAchievementModal] = useState({ isOpen: false, goalName: '' });
+// Define types
+interface SavingsGoal {
+  id: string;
+  name: string;
+  target: number;
+  saved: number;
+}
+
+interface Budget {
+  id: string;
+  category: string;
+  allocated: number;
+}
+
+interface User {
+  monthlyIncome: number;
+}
+
+interface AchievementModalState {
+  isOpen: boolean;
+  goalName: string;
+}
+
+const Savings: React.FC = () => {
+  const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>([]);
+  const [budgets, setBudgets] = useState<Budget[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [currentGoal, setCurrentGoal] = useState<SavingsGoal | null>(null);
+  const [remainingBalance, setRemainingBalance] = useState<number>(0);
+  const [token, setToken] = useState<string>('');
+  const [achievementModal, setAchievementModal] = useState<AchievementModalState>({
+    isOpen: false,
+    goalName: '',
+  });
 
   useEffect(() => {
     const fetchSavingsGoals = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token') || '';
         setToken(token);
         const response = await getSavingsGoals(token);
         setSavingsGoals(response.savingsGoals);
@@ -32,7 +65,7 @@ const Savings = () => {
   useEffect(() => {
     const fetchBudgets = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token') || '';
         const response = await getBudgets(token);
         setBudgets(response.budgets || []);
       } catch (error) {
@@ -46,9 +79,9 @@ const Savings = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token') || '';
         const response = await getUser(token);
-        const user = response.user;
+        const user: User = response.user;
         const totalAllocated = budgets.reduce((sum, budget) => sum + budget.allocated, 0);
         const totalSaved = savingsGoals.reduce((sum, goal) => sum + goal.saved, 0);
         setRemainingBalance(user.monthlyIncome - totalAllocated - totalSaved);
@@ -60,15 +93,18 @@ const Savings = () => {
     fetchUserData();
   }, [budgets, savingsGoals]);
 
-  const handleSaveGoal = async (goal) => {
+  const handleSaveGoal = async (goal: Omit<SavingsGoal, 'id'>) => {
     try {
       if (currentGoal) {
         const response = await updateSavingsGoal(token, { goalId: currentGoal.id, ...goal });
-        setSavingsGoals(savingsGoals.map((g) => (g.id === currentGoal.id ? response.savingsGoal : g)));
+        setSavingsGoals(
+          savingsGoals.map((g) => (g.id === currentGoal.id ? response.savingsGoal : g))
+        );
       } else {
         const response = await createSavingsGoal(token, goal);
         setSavingsGoals([...savingsGoals, response.savingsGoal]);
       }
+
       setIsModalOpen(false);
       setCurrentGoal(null);
 
@@ -80,12 +116,12 @@ const Savings = () => {
     }
   };
 
-  const handleEditGoal = (goal) => {
+  const handleEditGoal = (goal: SavingsGoal) => {
     setCurrentGoal(goal);
     setIsModalOpen(true);
   };
 
-  const handleDeleteGoal = async (index) => {
+  const handleDeleteGoal = async (index: number) => {
     try {
       const goalId = savingsGoals[index].id;
       await deleteSavingsGoal(token, goalId);
@@ -97,7 +133,7 @@ const Savings = () => {
 
   const refreshSavingsData = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('token') || '';
       const response = await getSavingsGoals(token);
       setSavingsGoals(response.savingsGoals);
     } catch (error) {
@@ -111,11 +147,15 @@ const Savings = () => {
 
   return (
     <div>
-      <BottomNavBar/>
+      <BottomNavBar />
       <div className="min-h-screen bg-background p-4">
         <h1 className="text-xl text-text font-bold font-montserrat mb-4">Savings</h1>
         <SavingsSummary savingsGoals={savingsGoals} />
-        <SavingsList savingsGoals={savingsGoals} onEdit={handleEditGoal} onDelete={handleDeleteGoal} />
+        <SavingsList
+          savingsGoals={savingsGoals}
+          onEdit={handleEditGoal}
+          onDelete={handleDeleteGoal}
+        />
 
         <button
           onClick={() => setIsModalOpen(true)}
@@ -144,7 +184,9 @@ const Savings = () => {
               </p>
               <div className="flex justify-end">
                 <button
-                  onClick={() => setAchievementModal({ isOpen: false, goalName: '' })}
+                  onClick={() =>
+                    setAchievementModal({ isOpen: false, goalName: '' })
+                  }
                   className="bg-secondary text-background font-roboto px-4 py-2 rounded-md"
                 >
                   Close
