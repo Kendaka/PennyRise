@@ -5,6 +5,7 @@ import ConfirmationModal from '../../common/ConfirmationModal';
 import { getCurrencySymbol } from '../../../utils/currencyUtils.js';
 
 interface SavingsGoal {
+  id: string;
   name: string;
   saved: number;
   target: number;
@@ -56,7 +57,7 @@ const SavingsList: React.FC<SavingsListProps> = ({ savingsGoals, onEdit, onDelet
       ) : (
         <ul>
           {savingsGoals.map((goal, index) => (
-            <li key={index} className="mb-4">
+            <li key={goal.id} className="mb-4">
               <div className="flex justify-between items-center">
                 <p className="font-bold font-montserrat text-text text-lg">{goal.name}</p>
                 <div className="flex items-center space-x-4">
