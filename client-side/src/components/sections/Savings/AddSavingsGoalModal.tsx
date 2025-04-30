@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
 interface SavingsGoalData {
+  id?: string;
   name: string;
   target: number;
   saved: number;
 }
 
 interface AddSavingsGoalModalProps {
-  onSave: (goal: SavingsGoalData) => void;
+  onSave: (goal: Omit<SavingsGoalData, 'id'>) => void;
   onClose: () => void;
   initialData?: SavingsGoalData;
   remainingBalance: number;

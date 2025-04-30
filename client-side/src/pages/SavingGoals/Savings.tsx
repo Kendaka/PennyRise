@@ -13,7 +13,7 @@ import {
 } from '../../services/api';
 
 // Define types
-interface SavingsGoal {
+interface SavingsGoalData {
   id: string;
   name: string;
   target: number;
@@ -36,10 +36,10 @@ interface AchievementModalState {
 }
 
 const Savings: React.FC = () => {
-  const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>([]);
+  const [savingsGoals, setSavingsGoals] = useState<SavingsGoalData[]>([]);
   const [budgets, setBudgets] = useState<Budget[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [currentGoal, setCurrentGoal] = useState<SavingsGoal | null>(null);
+  const [currentGoal, setCurrentGoal] = useState<SavingsGoalData | undefined>(undefined);
   const [remainingBalance, setRemainingBalance] = useState<number>(0);
   const [token, setToken] = useState<string>('');
   const [achievementModal, setAchievementModal] = useState<AchievementModalState>({
@@ -93,7 +93,7 @@ const Savings: React.FC = () => {
     fetchUserData();
   }, [budgets, savingsGoals]);
 
-  const handleSaveGoal = async (goal: Omit<SavingsGoal, 'id'>) => {
+  const handleSaveGoal = async (goal: Omit<SavingsGoalData, 'id'>) => {
     try {
       if (currentGoal) {
         const response = await updateSavingsGoal(token, { goalId: currentGoal.id, ...goal });
@@ -106,7 +106,7 @@ const Savings: React.FC = () => {
       }
 
       setIsModalOpen(false);
-      setCurrentGoal(null);
+      setCurrentGoal(undefined);
 
       if (goal.saved >= goal.target) {
         setAchievementModal({ isOpen: true, goalName: goal.name });
@@ -116,7 +116,7 @@ const Savings: React.FC = () => {
     }
   };
 
-  const handleEditGoal = (goal: SavingsGoal) => {
+  const handleEditGoal = (goal: SavingsGoalData) => {
     setCurrentGoal(goal);
     setIsModalOpen(true);
   };
