@@ -1,3 +1,4 @@
+// Onboarding.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
@@ -5,11 +6,16 @@ import { currencyOptions } from '../../utils/currencyOptions';
 import ErrorModal from '../../components/common/ErrorModal';
 import { updateUserIncomeAndCurrency, updateUserOnboardingStatus } from '../../services/api';
 
-const Onboarding = () => {
-  const [monthlyIncome, setMonthlyIncome] = useState('');
-  const [selectedCurrency, setSelectedCurrency] = useState(currencyOptions[0]);
-  const [showErrorModal, setShowErrorModal] = useState(false);
-  const [error, setError] = useState('');
+interface CurrencyOption {
+  value: string;
+  label: string;
+}
+
+const Onboarding: React.FC = () => {
+  const [monthlyIncome, setMonthlyIncome] = useState<string>('');
+  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyOption | null>(currencyOptions[0]);
+  const [showErrorModal, setShowErrorModal] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -27,13 +33,22 @@ const Onboarding = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const userId = JSON.parse(atob(token.split('.')[1])).id; 
+      if (!token) throw new Error('No token found');
 
-      const updatedUser = await updateUserIncomeAndCurrency(token, { userId, monthlyIncome, preferredCurrency: selectedCurrency.value });
-      await updateUserOnboardingStatus(token, { userId, onboardingCompleted: true });
+      const userId = JSON.parse(atob(token.split('.')[1])).id;
+
+      const updatedUser = await updateUserIncomeAndCurrency(token, {
+        userId,
+        monthlyIncome,
+        preferredCurrency: selectedCurrency.value,
+      });
+
+      await updateUserOnboardingStatus(token, {
+        userId,
+        onboardingCompleted: true,
+      });
 
       localStorage.setItem('user', JSON.stringify(updatedUser.user));
-
       navigate('/dashboard');
     } catch (error) {
       console.error('Onboarding error:', error);
@@ -59,7 +74,7 @@ const Onboarding = () => {
             type="number"
             placeholder="Enter your monthly income"
             value={monthlyIncome}
-            onChange={(e) => setMonthlyIncome(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMonthlyIncome(e.target.value)}
             className="py-3 px-4 mb-3 w-full bg-background text-[#333333] placeholder-[#777777] border border-secondary rounded-md focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
           />
         </div>
@@ -67,7 +82,7 @@ const Onboarding = () => {
           <label className="block text-sm text-textLight font-roboto mb-1">Preferred Currency</label>
           <Select
             value={selectedCurrency}
-            onChange={setSelectedCurrency}
+            onChange={(option) => setSelectedCurrency(option as CurrencyOption)}
             options={currencyOptions}
             className="mb-4"
           />
