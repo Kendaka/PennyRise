@@ -38,6 +38,8 @@ const Transactions: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [token, setToken] = useState<string>('');
 
+
+  // Fetch transactions and budgets when the component mounts
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
