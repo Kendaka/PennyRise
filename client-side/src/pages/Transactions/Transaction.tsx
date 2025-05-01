@@ -39,7 +39,7 @@ const Transactions: React.FC = () => {
   const [token, setToken] = useState<string>('');
 
 
-  // Fetch transactions and budgets when the component mount
+  // Fetch transactions and budgets when the component mounts
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
