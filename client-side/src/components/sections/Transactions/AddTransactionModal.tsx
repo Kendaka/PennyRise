@@ -58,6 +58,7 @@ const AddTransactionModal: React.FC<AddTransactionModalProps> = ({ onAdd, onClos
       <div className="bg-background p-6 rounded-md shadow-lg w-96">
         <h3 className="text-lg text-text font-bold font-montserrat mb-4">Add Transaction</h3>
 
+        // Input fields for transaction details
         <input
           type="text"
           placeholder="Transaction Name"
