@@ -8,6 +8,6 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <BrowserRouter>
-    <App />
+    <App /> // Main application component
   </BrowserRouter>
 );
