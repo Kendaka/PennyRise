@@ -1,4 +1,11 @@
-export const currencyOptions = [
+// currencyOptions.ts
+
+export interface CurrencyOption {
+  value: string;
+  label: string;
+}
+
+export const currencyOptions: CurrencyOption[] = [
   { value: 'USD', label: 'USD - $' },
   { value: 'EUR', label: 'EUR - €' },
   { value: 'GBP', label: 'GBP - £' },
