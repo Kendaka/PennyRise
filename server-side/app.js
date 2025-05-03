@@ -14,6 +14,7 @@ require('./config/passport');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Middleware for CORS
 const corsOptions = {
   origin: 'https://prise-coral.vercel.app',
   credentials: true, 
