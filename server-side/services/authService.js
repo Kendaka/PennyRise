@@ -1,3 +1,4 @@
+// This file contains the logic for generating a password reset token and resetting the password.
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const { Sequelize } = require('sequelize'); 
