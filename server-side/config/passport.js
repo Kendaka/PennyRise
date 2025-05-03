@@ -9,6 +9,7 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
+// Deserialize user instance from the session
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await User.findByPk(id);
