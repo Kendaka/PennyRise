@@ -19,6 +19,7 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+// Configure the Google OAuth strategy
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
