@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const { Sequelize } = require('sequelize'); 
 const User = require('../models/User');
 
+// This function generates a password reset token and saves it to the user's record in the database.
 const generateResetToken = async (email) => {
   const user = await User.findOne({ where: { email } });
   if (!user) {
