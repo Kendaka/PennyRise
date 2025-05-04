@@ -73,6 +73,7 @@ export const getUser = async (token: string) => {
   return response.data;
 };
 
+// Get user by ID
 export const updateUserProfile = async (token: string, profileData: ProfileData) => {
   const response = await axios.put(`${API_URL}/users/update-profile`, profileData, {
     headers: { Authorization: `Bearer ${token}` },
