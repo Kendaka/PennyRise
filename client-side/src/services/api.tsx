@@ -89,6 +89,7 @@ export const updateUserIncomeAndCurrency = async (token: string, incomeCurrencyD
   return response.data;
 };
 
+// Update user onboarding status
 export const updateUserOnboardingStatus = async (token: string, onboardingData: OnboardingData) => {
   const response = await axios.put(`${API_URL}/users/update-onboarding-status`, onboardingData, {
     headers: { Authorization: `Bearer ${token}` },
