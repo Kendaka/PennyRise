@@ -1,5 +1,4 @@
-// currencyOptions.ts
-
+// This file contains the currency options for the currency select component.
 export interface CurrencyOption {
   value: string;
   label: string;
