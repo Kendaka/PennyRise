@@ -1,5 +1,4 @@
-// categories.ts
-
+// This file defines the categories used in the application, including their names, values, and colors.
 export interface Category {
   name: string;
   value: string;
