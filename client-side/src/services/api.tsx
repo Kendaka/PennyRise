@@ -105,6 +105,7 @@ export const changeUserPassword = async (token: string, passwordData: PasswordDa
   return response.data;
 };
 
+// Update user profile picture
 export const updateUserProfilePicture = async (token: string, formData: FormData) => {
   const response = await axios.put(`${API_URL}/users/update-profile-picture`, formData, {
     headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
