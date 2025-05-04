@@ -81,6 +81,7 @@ export const updateUserProfile = async (token: string, profileData: ProfileData)
   return response.data;
 };
 
+// Update user income and currency
 export const updateUserIncomeAndCurrency = async (token: string, incomeCurrencyData: IncomeCurrencyData) => {
   const response = await axios.put(`${API_URL}/users/update-income-currency`, incomeCurrencyData, {
     headers: { Authorization: `Bearer ${token}` },
