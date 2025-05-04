@@ -13,6 +13,7 @@ import Profile from "./pages/Profile/Profile";
 import Onboarding from "./pages/Onboarding/Onboarding";
 
 const App: React.FC = () => {
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
