@@ -97,6 +97,7 @@ export const updateUserOnboardingStatus = async (token: string, onboardingData: 
   return response.data;
 };
 
+// change user password
 export const changeUserPassword = async (token: string, passwordData: PasswordData) => {
   const response = await axios.put(`${API_URL}/users/change-password`, passwordData, {
     headers: { Authorization: `Bearer ${token}` },
