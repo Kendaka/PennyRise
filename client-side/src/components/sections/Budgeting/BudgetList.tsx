@@ -19,7 +19,7 @@ interface BudgetListProps {
   onDelete: (index: number) => void;
   currency: string;
 }
-
+// Define the BudgetList component
 const BudgetList: React.FC<BudgetListProps> = ({ budgets, onEdit, onDelete, currency }) => {
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const [budgetToDelete, setBudgetToDelete] = useState<number | null>(null);
