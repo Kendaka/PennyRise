@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import categories from '../../../utils/categories';
 import { getUser } from '../../../services/api';
 
+// Define the type for the user data
 interface AddBudgetModalProps {
   onSave: (data: { category: string; limit: number }) => void;
   onClose: () => void;
