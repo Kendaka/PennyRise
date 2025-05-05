@@ -31,6 +31,7 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onEdit, onDelete, curr
     }
   }, []);
 
+  // Function to handle the delete button click
   const handleDeleteClick = (index: number) => {
     setBudgetToDelete(index);
     setShowConfirmation(true);
