@@ -46,6 +46,7 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onEdit, onDelete, curr
     }
   };
 
+  // Function to handle the cancellation of deletion
   const handleCancelDelete = () => {
     setShowConfirmation(false);
     setBudgetToDelete(null);
