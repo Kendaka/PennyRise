@@ -7,6 +7,7 @@ interface ErrorModalProps {
   onClose: () => void;
 }
 
+// ErrorModal component definition
 const ErrorModal: React.FC<ErrorModalProps> = ({ message, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
