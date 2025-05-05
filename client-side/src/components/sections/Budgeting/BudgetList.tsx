@@ -4,8 +4,9 @@ import { FiTrash } from 'react-icons/fi';
 import ConfirmationModal from '../../common/ConfirmationModal';
 import { getCurrencySymbol } from '../../../utils/currencyUtils';
 
+// Define the Budget interface to represent each budget item
 interface Budget {
-  id: string; // Add this line
+  id: string; 
   category: string;
   allocated: number;
   spent: number;
