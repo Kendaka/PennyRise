@@ -12,6 +12,7 @@ interface Budget {
   spent: number;
 }
 
+// Define the props for the BudgetList component
 interface BudgetListProps {
   budgets: Budget[];
   onEdit: (budget: Budget) => void;
