@@ -7,6 +7,7 @@ interface ConfirmationModalProps {
   onCancel: () => void;
 }
 
+// ConfirmationModal component
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ message, onConfirm, onCancel }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
