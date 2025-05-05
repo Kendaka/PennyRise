@@ -6,6 +6,8 @@ interface SlidingButtonProps {
   onClick: () => void;
 }
 
+
+// Define the SlidingButton component
 const SlidingButton: React.FC<SlidingButtonProps> = ({ text, onClick }) => {
   return (
     <button
