@@ -52,6 +52,7 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onEdit, onDelete, curr
     setBudgetToDelete(null);
   };
 
+  // Function to format the currency symbol
   return (
     <div className="bg-background p-4 rounded-md shadow-md mb-20">
       <h2 className="text-md text-text font-montserrat mb-4">Your Budgets</h2>
