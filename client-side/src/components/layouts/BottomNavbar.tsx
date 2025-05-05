@@ -7,6 +7,7 @@ import priseLogo from '../../assets/images/prise.png';
 const BottomNavBar: React.FC = () => {
   const navigate = useNavigate();
 
+  // Define the navigation buttons with their respective routes and icons
   return (
     <nav className="fixed bottom-0 md:relative md:top-0 w-full bg-background shadow-md border-t md:border-b border-gray-200">
       <div className="flex justify-between items-center py-2 md:py-4 md:pr-8">
