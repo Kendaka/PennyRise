@@ -18,6 +18,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ userName }) => {
     }
   }, []);
 
+  // Function to format the currency symbol
   return (
     <header className="flex items-center bg-background p-3">
       <img
