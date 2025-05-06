@@ -21,12 +21,13 @@ interface SpendingBreakdownProps {
   currency: string;
 }
 
+// This component displays a pie chart of spending breakdown by category
 const SpendingBreakdown: React.FC<SpendingBreakdownProps> = ({ transactions, budgets, currency }) => {
   const budgetMap = budgets.reduce<Record<string, number>>((acc, budget) => {
     acc[budget.category] = budget.allocated;
     return acc;
   }, {});
-
+ //  Create a map of budgets with category as key and allocated amount as value
   const expenseMap = transactions.reduce<Record<string, number>>((acc, transaction) => {
     if (transaction.type === 'expense') {
       if (!acc[transaction.category]) {
@@ -36,7 +37,7 @@ const SpendingBreakdown: React.FC<SpendingBreakdownProps> = ({ transactions, bud
     }
     return acc;
   }, {});
-
+  // Create a map of expenses with category as key and amount as value
   const data = Object.keys(budgetMap).map((category) => ({
     name: category,
     value: expenseMap[category] || 0,
