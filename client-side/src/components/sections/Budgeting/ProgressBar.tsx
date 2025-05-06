@@ -1,8 +1,9 @@
 import React from 'react';
 
+// Define the props for the ProgressBar component
 interface ProgressBarProps {
   value: number;
-  color: 'accent' | 'blue'; // You can extend this if you have more color options
+  color: 'accent' | 'blue';
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ value, color }) => {
