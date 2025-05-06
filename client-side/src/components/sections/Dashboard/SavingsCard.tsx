@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Define the props for the SavingsCard component
 interface SavingsCardProps {
   totalSaved: number;
   totalTarget: number;
@@ -7,6 +8,7 @@ interface SavingsCardProps {
   currency: string;
 }
 
+// Define the SavingsCard component
 const SavingsCard: React.FC<SavingsCardProps> = ({ totalSaved, totalTarget, progressPercentage, currency }) => {
   return (
     <div className="p-4 bg-background rounded-md shadow-lg">
