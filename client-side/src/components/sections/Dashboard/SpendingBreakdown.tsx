@@ -1,17 +1,20 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
+//  This component displays a pie chart of spending breakdown by category
 interface Transaction {
   type: string;
   category: string;
   amount: number;
 }
 
+//  This component displays a pie chart of spending breakdown by category
 interface Budget {
   category: string;
   allocated: number;
 }
 
+// This component displays a pie chart of spending breakdown by category
 interface SpendingBreakdownProps {
   transactions: Transaction[];
   budgets: Budget[];
