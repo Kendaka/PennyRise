@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import defaultProfilePic from '../../../assets/images/defaultProfilePic.png';
 
+// Define the props for the DashboardHeader component
 interface DashboardHeaderProps {
   userName: string;
 }
