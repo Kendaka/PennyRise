@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Define the props for the CurrentBalanceCard component
 interface CurrentBalanceCardProps {
   totalIncome: number;
   totalExpenses: number;
@@ -9,6 +10,7 @@ interface CurrentBalanceCardProps {
   currency: string;
 }
 
+// Define the CurrentBalanceCard component
 const CurrentBalanceCard: React.FC<CurrentBalanceCardProps> = ({
   totalIncome,
   totalExpenses,
