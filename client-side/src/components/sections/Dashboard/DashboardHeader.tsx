@@ -6,9 +6,11 @@ interface DashboardHeaderProps {
   userName: string;
 }
 
+// Define the DashboardHeader component
 const DashboardHeader: React.FC<DashboardHeaderProps> = ({ userName }) => {
   const [profilePicture, setProfilePicture] = useState<string>(defaultProfilePic);
 
+  // Fetch the user's profile picture from local storage when the component mounts
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user') || 'null');
     if (user && user.profilePicture) {
