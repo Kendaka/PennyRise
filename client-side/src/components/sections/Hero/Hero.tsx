@@ -3,6 +3,8 @@ import heroImage from "../../../assets/images/icon.png";
 import SlidingButton from "../../common/SlidingButton";
 import { useNavigate } from "react-router-dom";
 
+
+// This component is the hero section of the landing page. It contains an image and a call to action button.
 const Hero: React.FC = () => {
     const navigate = useNavigate();
     
