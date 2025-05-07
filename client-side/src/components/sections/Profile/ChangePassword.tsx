@@ -12,6 +12,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({ onChangePasswor
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
+  // This function handles the submission of the form. It checks if the new password and confirmation match, and if they do, it calls the onChangePassword function with the current and new passwords.
   const handleSubmit = () => {
     if (newPassword !== confirmPassword) {
       setError('Passwords do not match');
@@ -20,6 +21,8 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({ onChangePasswor
     onChangePassword({ currentPassword, newPassword });
   };
 
+
+  // This function handles the change of the current password input field.
   return (
     <div className="bg-background p-4 rounded-md shadow-md mt-2">
       <h3 className="text-lg text-text font-montserrat font-bold mb-4">Change Password</h3>
