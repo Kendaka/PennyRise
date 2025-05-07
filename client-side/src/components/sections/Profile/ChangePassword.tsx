@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
+// This component allows users to change their password. It includes fields for the current password, new password, and confirmation of the new password.
 interface ChangePasswordFormProps {
   onChangePassword: (passwords: { currentPassword: string; newPassword: string }) => void;
 }
 
+// This component allows users to change their password. It includes fields for the current password, new password, and confirmation of the new password.
 const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({ onChangePassword }) => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
