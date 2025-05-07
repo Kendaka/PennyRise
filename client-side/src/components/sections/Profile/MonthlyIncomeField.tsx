@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+// This component allows the user to input their monthly income and save it.
 interface MonthlyIncomeFieldProps {
   initialIncome: number;
   onSave: (income: number) => void;
 }
 
+// MonthlyIncomeField component
 const MonthlyIncomeField: React.FC<MonthlyIncomeFieldProps> = ({ initialIncome, onSave }) => {
   const [monthlyIncome, setMonthlyIncome] = useState(initialIncome);
 
