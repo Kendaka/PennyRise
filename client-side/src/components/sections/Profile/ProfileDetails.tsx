@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 interface User {
   username: string;
   email: string;
@@ -10,6 +11,7 @@ interface ProfileDetailsProps {
   onUpdate: (updatedUser: { username: string }) => void;
 }
 
+// This component displays the user's profile details and allows them to update their username.
 const ProfileDetails: React.FC<ProfileDetailsProps> = ({ user, onUpdate }) => {
   const [name, setName] = useState<string>(user.username || '');
 
