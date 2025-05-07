@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Select, { SingleValue } from 'react-select';
 import { currencyOptions } from '../../../utils/currencyOptions';
 
+// Define the type for the currency options
 interface CurrencyOption {
   value: string;
   label: string;
 }
 
+// Define the type for the props of the CurrencyField component
 interface CurrencyFieldProps {
   onSave: (currency: CurrencyOption) => void;
 }
