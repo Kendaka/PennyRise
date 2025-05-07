@@ -25,10 +25,12 @@ const CurrencyField: React.FC<CurrencyFieldProps> = ({ onSave }) => {
     }
   }, []);
 
+  //  Handle the save button click event
   const handleSave = () => {
     onSave(selectedCurrency);
   };
 
+  // Handle the currency selection change event
   const handleCurrencyChange = (newValue: SingleValue<CurrencyOption>) => {
     if (newValue) {
       setSelectedCurrency(newValue);
