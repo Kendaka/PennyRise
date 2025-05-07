@@ -13,6 +13,7 @@ interface CurrencyFieldProps {
   onSave: (currency: CurrencyOption) => void;
 }
 
+// Define the CurrencyField component
 const CurrencyField: React.FC<CurrencyFieldProps> = ({ onSave }) => {
   const [selectedCurrency, setSelectedCurrency] = useState<CurrencyOption>(currencyOptions[0]);
 
