@@ -27,6 +27,7 @@ const AddSavingsGoalModal: React.FC<AddSavingsGoalModalProps> = ({
   const [saved, setSaved] = useState<string>(initialData?.saved?.toString() || '');
   const [error, setError] = useState<string>('');
 
+  // This function handles the submission of the form. It validates the input values and calls the onSave function with the goal data.
   const handleSubmit = () => {
     const savedAmount = parseFloat(saved) || 0;
     const targetAmount = parseFloat(target) || 0;
