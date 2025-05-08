@@ -25,6 +25,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, onChangeImage, onDe
     }
   }, [user]);
 
+  // This function handles the deletion of the profile picture.
   const handleDeleteImage = async () => {
     await onDeleteImage();
     setProfilePicture(DefaultProfile);
