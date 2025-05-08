@@ -14,7 +14,7 @@ interface ProfileDetailsProps {
 // This component displays the user's profile details and allows them to update their username.
 const ProfileDetails: React.FC<ProfileDetailsProps> = ({ user, onUpdate }) => {
   const [name, setName] = useState<string>(user.username || '');
-
+  // This state variable holds the username input by the user.
   const handleSave = () => {
     if (name.trim()) {
       onUpdate({ username: name });
