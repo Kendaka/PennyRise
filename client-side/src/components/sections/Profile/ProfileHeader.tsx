@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import DefaultProfile from '../../../assets/images/defaultProfilePic.png';
 
+// This component displays the user's profile picture and allows them to change or delete it.
 interface User {
   profilePicture?: string;
 }
 
+// The ProfileHeader component is responsible for displaying the user's profile picture and providing options to change or delete it.
 interface ProfileHeaderProps {
   user: User;
   onChangeImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
