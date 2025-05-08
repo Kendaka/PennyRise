@@ -15,7 +15,7 @@ interface AddSavingsGoalModalProps {
   initialData?: SavingsGoalData;
   remainingBalance: number;
 }
-
+//  // This component is responsible for adding or editing a savings goal in the application.
 const AddSavingsGoalModal: React.FC<AddSavingsGoalModalProps> = ({
   onSave,
   onClose,
