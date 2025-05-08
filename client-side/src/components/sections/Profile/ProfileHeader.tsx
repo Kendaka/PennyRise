@@ -13,6 +13,7 @@ interface ProfileHeaderProps {
   onDeleteImage: () => Promise<void>;
 }
 
+// The ProfileHeader component is responsible for displaying the user's profile picture and providing options to change or delete it.
 const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, onChangeImage, onDeleteImage }) => {
   const [profilePicture, setProfilePicture] = useState<string>(DefaultProfile);
 
