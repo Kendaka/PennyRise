@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// This component is responsible for adding or editing a savings goal in the application.
 interface SavingsGoalData {
   id?: string;
   name: string;
@@ -7,6 +8,7 @@ interface SavingsGoalData {
   saved: number;
 }
 
+// This component is responsible for adding or editing a savings goal in the application.
 interface AddSavingsGoalModalProps {
   onSave: (goal: Omit<SavingsGoalData, 'id'>) => void;
   onClose: () => void;
