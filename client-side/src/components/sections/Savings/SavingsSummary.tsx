@@ -8,6 +8,7 @@ interface SavingsGoal {
   target: number;
 }
 
+// SavingsSummaryProps interface defines the props for the SavingsSummary component.
 interface SavingsSummaryProps {
   savingsGoals: SavingsGoal[];
 }
