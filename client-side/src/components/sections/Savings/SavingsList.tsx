@@ -19,6 +19,7 @@ interface SavingsListProps {
   onDelete: (index: number) => void;
 }
 
+// Handle the deletion of a savings goal and show a confirmation modal.
 const SavingsList: React.FC<SavingsListProps> = ({ savingsGoals, onEdit, onDelete }) => {
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const [goalToDelete, setGoalToDelete] = useState<number | null>(null);
