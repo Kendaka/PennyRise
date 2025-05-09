@@ -23,6 +23,7 @@ const SavingsSummary: React.FC<SavingsSummaryProps> = ({ savingsGoals }) => {
     }
   }, []);
 
+  // Calculate the total saved and target amounts from the savings goals.
   const totalSaved = savingsGoals.reduce((acc, goal) => acc + goal.saved, 0);
   const totalTarget = savingsGoals.reduce((acc, goal) => acc + goal.target, 0);
 
