@@ -27,6 +27,7 @@ const SavingsSummary: React.FC<SavingsSummaryProps> = ({ savingsGoals }) => {
   const totalSaved = savingsGoals.reduce((acc, goal) => acc + goal.saved, 0);
   const totalTarget = savingsGoals.reduce((acc, goal) => acc + goal.target, 0);
 
+  // Render the savings summary component.
   return (
     <div className="bg-background p-6 rounded-md shadow-md">
       <h2 className="text-lg text-text font-montserrat font-bold mb-4">Savings Summary</h2>
