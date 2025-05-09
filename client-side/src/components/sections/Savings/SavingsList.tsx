@@ -4,6 +4,7 @@ import { FiTrash } from 'react-icons/fi';
 import ConfirmationModal from '../../common/ConfirmationModal';
 import { getCurrencySymbol } from '../../../utils/currencyUtils.js';
 
+// This component is responsible for displaying a list of savings goals and allowing the user to edit or delete them.
 interface SavingsGoal {
   id: string;
   name: string;
