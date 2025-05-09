@@ -37,6 +37,7 @@ const SavingsList: React.FC<SavingsListProps> = ({ savingsGoals, onEdit, onDelet
     setShowConfirmation(true);
   };
 
+  // Handle the confirmation of deletion and call the onDelete function with the goal index.
   const handleConfirmDelete = () => {
     if (goalToDelete !== null) {
       onDelete(goalToDelete);
