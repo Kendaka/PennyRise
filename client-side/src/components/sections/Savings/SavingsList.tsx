@@ -12,6 +12,7 @@ interface SavingsGoal {
   target: number;
 }
 
+// This component is responsible for displaying a list of savings goals and allowing the user to edit or delete them.
 interface SavingsListProps {
   savingsGoals: SavingsGoal[];
   onEdit: (goal: SavingsGoal) => void;
