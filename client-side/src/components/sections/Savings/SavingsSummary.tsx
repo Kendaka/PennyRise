@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getCurrencySymbol } from '../../../utils/currencyUtils';
 
+// This component is responsible for displaying a summary of savings goals, including total saved and target amounts.
 interface SavingsGoal {
   name: string;
   saved: number;
