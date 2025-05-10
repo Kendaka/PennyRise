@@ -3,6 +3,7 @@ import { FiTrash } from 'react-icons/fi';
 import ConfirmationModal from '../../common/ConfirmationModal';
 import { getCurrencySymbol } from '../../../utils/currencyUtils';
 
+// Assuming you have a utility function to get the currency symbol based on user preference
 interface Transaction {
   name: string;
   amount: number;
