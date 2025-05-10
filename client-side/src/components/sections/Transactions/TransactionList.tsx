@@ -18,6 +18,7 @@ interface TransactionListProps {
   onDelete: (index: number) => void;
 }
 
+// TransactionList component
 const TransactionList: React.FC<TransactionListProps> = ({ transactions, onDelete }) => {
   const [showAll, setShowAll] = useState<boolean>(false);
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
