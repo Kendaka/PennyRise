@@ -35,6 +35,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions, onDelet
   const maxTransactionsToShow = 8;
   const visibleTransactions = showAll ? transactions : transactions.slice(0, maxTransactionsToShow);
 
+  // Function to handle delete button click
   const handleDeleteClick = (index: number) => {
     setTransactionToDelete(index);
     setShowConfirmation(true);
