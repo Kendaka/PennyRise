@@ -41,6 +41,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions, onDelet
     setShowConfirmation(true);
   };
 
+  // Function to handle confirmation of deletion
   const handleConfirmDelete = () => {
     if (transactionToDelete !== null) {
       onDelete(transactionToDelete);
@@ -49,6 +50,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions, onDelet
     setTransactionToDelete(null);
   };
 
+  // Function to handle cancellation of deletion
   const handleCancelDelete = () => {
     setShowConfirmation(false);
     setTransactionToDelete(null);
