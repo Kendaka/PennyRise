@@ -54,6 +54,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions, onDelet
     setTransactionToDelete(null);
   };
 
+  // Function to format the date
   return (
     <div className="bg-white p-4 rounded-md shadow-md relative">
       <h2 className="text-lg text-text font-bold font-montserrat mb-4">Transaction History</h2>
