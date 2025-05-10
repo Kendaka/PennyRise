@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import categories from '../../../utils/categories';
 
+// Assuming categories is an array of objects with a 'name' property
 interface Budget {
   category: string;
   allocated: number;
