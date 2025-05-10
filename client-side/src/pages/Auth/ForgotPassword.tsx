@@ -8,6 +8,7 @@ const ForgotPassword: React.FC = () => {
   const [success, setSuccess] = useState<string>('');
   const navigate = useNavigate();
 
+  // Redirect to login page after successful password reset request
   const handleSubmit = async () => {
     if (email.trim()) {
       try {
