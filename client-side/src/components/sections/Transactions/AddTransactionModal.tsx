@@ -22,6 +22,7 @@ interface AddTransactionModalProps {
   budgets: Budget[];
 }
 
+// The AddTransactionModal component
 const AddTransactionModal: React.FC<AddTransactionModalProps> = ({ onAdd, onClose, budgets }) => {
   const [name, setName] = useState<string>('');
   const [amount, setAmount] = useState<string>('');
