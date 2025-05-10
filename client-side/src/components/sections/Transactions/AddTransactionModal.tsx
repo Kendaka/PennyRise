@@ -37,7 +37,7 @@ const AddTransactionModal: React.FC<AddTransactionModalProps> = ({ onAdd, onClos
       setError(`No budget found for category: ${category}`);
       return;
     }
-
+    // Validate the amount
     const parsedAmount = parseFloat(amount);
     if (budget.spent + parsedAmount > budget.allocated) {
       setError(`Not enough budget remaining for category: ${category}`);
