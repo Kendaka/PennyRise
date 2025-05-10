@@ -5,6 +5,7 @@ interface TransactionSearchProps {
   onSearch: (query: string) => void;
 }
 
+// This component renders a search input field
 const TransactionSearch: React.FC<TransactionSearchProps> = ({ onSearch }) => {
   return (
     <div className="mb-4">
