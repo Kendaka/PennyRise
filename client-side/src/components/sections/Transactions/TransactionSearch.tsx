@@ -1,5 +1,6 @@
 import React from 'react';
 
+// This component is used to search for transactions by name
 interface TransactionSearchProps {
   onSearch: (query: string) => void;
 }
