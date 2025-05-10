@@ -12,6 +12,7 @@ interface Transaction {
   date: string;
 }
 
+// Define the props for the TransactionList component
 interface TransactionListProps {
   transactions: Transaction[];
   onDelete: (index: number) => void;
