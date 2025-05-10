@@ -55,7 +55,7 @@ const AddTransactionModal: React.FC<AddTransactionModalProps> = ({ onAdd, onClos
       onClose();
     }
   };
-
+  // Handle key press events
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
       <div className="bg-background p-6 rounded-md shadow-lg w-96">
