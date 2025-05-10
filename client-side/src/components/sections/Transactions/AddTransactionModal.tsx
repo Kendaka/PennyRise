@@ -30,6 +30,7 @@ const AddTransactionModal: React.FC<AddTransactionModalProps> = ({ onAdd, onClos
   const [date, setDate] = useState<string>('');
   const [error, setError] = useState<string>('');
 
+  // Handle form submission
   const handleSubmit = () => {
     const budget = budgets.find(b => b.category === category);
     if (!budget) {
