@@ -25,6 +25,7 @@ const ForgotPassword: React.FC = () => {
     }
   };
 
+  // Redirect to login page after successful password reset request
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="bg-background p-6 rounded-md shadow-md w-full max-w-md">
