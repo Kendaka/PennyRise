@@ -52,6 +52,7 @@ const Login: React.FC = () => {
       return;
     }
 
+    // Check if email and password are valid
     try {
       setLoading(true);
       const response: UserResponse = await loginUser({ email, password });
