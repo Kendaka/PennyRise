@@ -31,6 +31,7 @@ const Login: React.FC = () => {
     setPasswordVisible(!passwordVisible);
   };
 
+  // Function to handle login
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
