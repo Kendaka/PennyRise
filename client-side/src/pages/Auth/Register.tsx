@@ -14,6 +14,7 @@ interface FormData {
   confirmPassword: string;
 }
 
+// Define types for the error state
 interface Errors {
   username: string;
   email: string;
