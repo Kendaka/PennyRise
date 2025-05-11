@@ -22,6 +22,7 @@ interface Errors {
   confirmPassword: string;
 }
 
+// Registration component
 const Registration: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     username: "",
