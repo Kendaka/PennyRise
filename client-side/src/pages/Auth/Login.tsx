@@ -80,6 +80,7 @@ const Login: React.FC = () => {
     }
   };
 
+  // Function to close the error modal
   const handleCloseErrorModal = () => {
     setShowErrorModal(false);
   };
