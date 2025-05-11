@@ -15,6 +15,7 @@ interface UserResponse {
   };
 }
 
+// Login component
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -25,6 +26,7 @@ const Login: React.FC = () => {
 
   const navigate = useNavigate();
 
+  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
