@@ -58,6 +58,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = () => {
     }
   };
 
+  // Function to handle navigation to login page
   return (
     <section className="min-h-screen bg-background flex flex-col justify-center items-center">
       <img 
