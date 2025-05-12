@@ -5,6 +5,7 @@ import { resetPassword } from '../../services/api';
 
 interface ResetPasswordProps {}
 
+// ResetPassword component
 const ResetPassword: React.FC<ResetPasswordProps> = () => {
   const [newPassword, setNewPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
@@ -16,6 +17,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = () => {
   const location = useLocation();
   const token = new URLSearchParams(location.search).get('token'); 
 
+  // Function to toggle password visibility
   const toggleNewPasswordVisibility = () => {
     setNewPasswordVisible(!newPasswordVisible);
   };
