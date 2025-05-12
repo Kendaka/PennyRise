@@ -31,6 +31,7 @@ const Registration: React.FC = () => {
     confirmPassword: "",
   });
 
+  // State for error messages
   const [errors, setErrors] = useState<Errors>({
     username: "",
     email: "",
