@@ -49,6 +49,7 @@ const Registration: React.FC = () => {
 
   const navigate = useNavigate(); 
 
+  // Handle input changes
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
