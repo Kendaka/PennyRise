@@ -39,6 +39,7 @@ const Registration: React.FC = () => {
     confirmPassword: "",
   });
 
+  // State for server error messages
   const [serverError, setServerError] = useState<string>("");
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState<boolean>(false);
