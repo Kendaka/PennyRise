@@ -134,6 +134,7 @@ const Registration: React.FC = () => {
     setShowErrorModal(false);
   };
 
+  // Render the registration form
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-background p-2">
       <img src={priseLogo} className="w-24 md:w-32 lg:w-32" alt="Prise Logo" />
