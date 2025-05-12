@@ -57,6 +57,7 @@ const Registration: React.FC = () => {
     setServerError("");
   };
 
+  // Toggle password visibility
   const togglePasswordVisibility = (): void => {
     setPasswordVisible(!passwordVisible);
   };
