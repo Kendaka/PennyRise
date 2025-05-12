@@ -123,11 +123,13 @@ const Registration: React.FC = () => {
     }
   };
 
+  // Close success modal and navigate to login page
   const handleCloseSuccessModal = (): void => {
     setShowSuccessModal(false);
     navigate('/login');
   };
 
+  // Close error modal
   const handleCloseErrorModal = (): void => {
     setShowErrorModal(false);
   };
