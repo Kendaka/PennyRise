@@ -43,6 +43,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = () => {
       return;
     }
 
+    // Call the API to reset the password
     try {
       if (token) {
         await resetPassword(token, newPassword);
