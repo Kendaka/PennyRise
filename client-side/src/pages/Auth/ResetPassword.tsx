@@ -33,6 +33,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = () => {
     setError('');
     setSuccess('');
 
+    // Validate the form inputs
     if (!newPassword || !confirmPassword) {
       setError('All fields are required.');
       return;
