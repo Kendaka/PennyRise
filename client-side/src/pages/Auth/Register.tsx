@@ -62,6 +62,7 @@ const Registration: React.FC = () => {
     setPasswordVisible(!passwordVisible);
   };
 
+  // Toggle confirm password visibility
   const toggleConfirmPasswordVisibility = (): void => {
     setConfirmPasswordVisible(!confirmPasswordVisible);
   };
