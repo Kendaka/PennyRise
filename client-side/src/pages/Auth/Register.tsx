@@ -67,6 +67,7 @@ const Registration: React.FC = () => {
     setConfirmPasswordVisible(!confirmPasswordVisible);
   };
 
+  // Handle form submission
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     let hasError = false;
