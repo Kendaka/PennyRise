@@ -39,7 +39,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = () => {
       return;
     }
 
-    // Check if the password meets the criteria
+    // Check if the password meets the criterias
     if (newPassword !== confirmPassword) {
       setError('Passwords do not match.');
       return;
