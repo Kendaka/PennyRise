@@ -22,10 +22,12 @@ const ResetPassword: React.FC<ResetPasswordProps> = () => {
     setNewPasswordVisible(!newPasswordVisible);
   };
 
+  // Function to toggle confirm password visibility
   const toggleConfirmPasswordVisibility = () => {
     setConfirmPasswordVisible(!confirmPasswordVisible);
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
