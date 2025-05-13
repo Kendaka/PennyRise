@@ -75,6 +75,7 @@ const Budgeting: React.FC = () => {
     fetchSavingsGoals();
   }, []);
 
+  // Fetch user data and calculate remaining balance
   useEffect(() => {
     const fetchUserData = async () => {
       try {
