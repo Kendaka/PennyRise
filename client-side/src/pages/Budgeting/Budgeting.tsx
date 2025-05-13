@@ -93,6 +93,7 @@ const Budgeting: React.FC = () => {
     fetchUserData();
   }, [budgets, savingsGoals]);
 
+  // Handle saving budget
   const handleSaveBudget = async (budget: BudgetFormData) => {
     try {
       if (currentBudget) {
