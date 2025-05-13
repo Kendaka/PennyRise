@@ -148,6 +148,7 @@ const Budgeting: React.FC = () => {
     setShowErrorModal(false);
   };
 
+  // Get initial data for the modal
   const getInitialData = () => {
     if (!currentBudget) return undefined;
     return {
