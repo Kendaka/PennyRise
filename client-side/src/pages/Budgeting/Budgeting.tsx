@@ -126,6 +126,7 @@ const Budgeting: React.FC = () => {
     }
   };
 
+  // Handle editing budget
   const handleEditBudget = (budget: Budget) => {
     setCurrentBudget(budget);
     setIsModalOpen(true);
