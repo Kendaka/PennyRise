@@ -5,6 +5,7 @@ import BottomNavbar from '../../components/layouts/BottomNavbar';
 import ErrorModal from '../../components/common/ErrorModal';
 import { getBudgets, createBudget, updateBudget, deleteBudget, getUser, getSavingsGoals } from '../../services/api';
 
+// Budgeting component
 interface Budget {
   id: string;
   category: string;
@@ -40,6 +41,7 @@ const Budgeting: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [remainingBalance, setRemainingBalance] = useState<number>(0);
 
+  // Fetch budgets and savings goals on component mount
   useEffect(() => {
     const fetchBudgets = async () => {
       try {
