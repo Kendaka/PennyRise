@@ -132,6 +132,7 @@ const Budgeting: React.FC = () => {
     setIsModalOpen(true);
   };
 
+  // Handle deleting budget
   const handleDeleteBudget = async (index: number) => {
     try {
       const budgetId = budgets[index].id;
