@@ -143,6 +143,7 @@ const Budgeting: React.FC = () => {
     }
   };
 
+  // Handle closing error modal
   const handleCloseErrorModal = () => {
     setShowErrorModal(false);
   };
