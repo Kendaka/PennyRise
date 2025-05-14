@@ -86,7 +86,7 @@ const Dashboard: React.FC = () => {
   const totalIncome = user.monthlyIncome;
   const totalExpenses = transactions.reduce((acc, transaction) => acc + transaction.amount, 0);
   const totalBudget = budgets.reduce((acc, budget) => acc + budget.allocated, 0);
-  const currentBalance = totalIncome - totalExpenses;
+  const currentBalance = totalIncome - totalExpenses; // Calculate current balance
   const progressPercentage = totalBudget > 0 ? (totalExpenses / totalBudget) * 100 : 0;
 
   // Calculate savings progress
