@@ -69,6 +69,7 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  // Fetch data on component mount
   useEffect(() => {
     refreshDashboardData();
   }, []);
