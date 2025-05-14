@@ -46,6 +46,7 @@ const Dashboard: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [currency, setCurrency] = useState<string>('$');
 
+  // Function to refresh dashboard data
   const refreshDashboardData = async () => {
     try {
       const token = localStorage.getItem('token') || '';
