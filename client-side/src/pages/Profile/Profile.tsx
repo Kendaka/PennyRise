@@ -21,6 +21,7 @@ import {
   getSavingsGoals
 } from '../../services/api';
 
+// Define the types for the user and currency options
 interface User {
   id?: string;
   username: string;
