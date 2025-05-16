@@ -35,6 +35,7 @@ const Onboarding: React.FC = () => {
       return;
     }
 
+    // Check if the selected currency is valid
     if (!selectedCurrency) {
       setError('Preferred currency is required.');
       setShowErrorModal(true);
