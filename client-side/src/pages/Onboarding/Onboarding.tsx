@@ -64,6 +64,7 @@ const Onboarding: React.FC = () => {
     }
   };
 
+  // Function to handle closing the error modal
   const handleCloseErrorModal = () => {
     setShowErrorModal(false);
   };
