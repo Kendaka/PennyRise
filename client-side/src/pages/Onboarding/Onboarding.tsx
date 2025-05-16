@@ -1,4 +1,3 @@
-// Onboarding.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
@@ -9,6 +8,16 @@ import { updateUserIncomeAndCurrency, updateUserOnboardingStatus } from '../../s
 interface CurrencyOption {
   value: string;
   label: string;
+}
+
+// Adding the correct TypeScript interfaces for API params
+interface IncomeCurrencyData {
+  income: number;  // Using 'income' as number instead of string
+  currency: string; // Using 'currency' instead of 'preferredCurrency'
+}
+
+interface OnboardingData {
+  completed: boolean; // Using 'completed' instead of 'onboardingCompleted'
 }
 
 const Onboarding: React.FC = () => {
@@ -35,17 +44,14 @@ const Onboarding: React.FC = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No token found');
 
-      const userId = JSON.parse(atob(token.split('.')[1])).id;
-
+      // Map the form values to the expected API format
       const updatedUser = await updateUserIncomeAndCurrency(token, {
-        userId,
-        monthlyIncome,
-        preferredCurrency: selectedCurrency.value,
+        income: Number(monthlyIncome),   // Convert string to number
+        currency: selectedCurrency.value, // Changed from preferredCurrency
       });
 
       await updateUserOnboardingStatus(token, {
-        userId,
-        onboardingCompleted: true,
+        completed: true,  // Changed from onboardingCompleted
       });
 
       localStorage.setItem('user', JSON.stringify(updatedUser.user));
@@ -66,7 +72,7 @@ const Onboarding: React.FC = () => {
       <div className="bg-background p-6 rounded-md shadow-md w-full max-w-md">
         <h1 className="text-xl text-text font-montserrat font-bold mb-4">Welcome to PennyPrise!</h1>
         <p className="text-sm text-textLight font-roboto mb-6">
-          Let's get started by setting up your monthly income and preferred currency.
+          Let&apos;s get started by setting up your monthly income and preferred currency.
         </p>
         <div className="mb-4">
           <label className="block text-sm text-textLight font-roboto mb-1">Monthly Income</label>
