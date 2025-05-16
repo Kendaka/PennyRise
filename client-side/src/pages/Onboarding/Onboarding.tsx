@@ -69,6 +69,7 @@ const Onboarding: React.FC = () => {
     setShowErrorModal(false);
   };
 
+  // Function to handle the change in the currency select input
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="bg-background p-6 rounded-md shadow-md w-full max-w-md">
