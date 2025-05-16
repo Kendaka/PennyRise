@@ -47,6 +47,12 @@ interface SavingsGoal {
   target: number;
 }
 
+// Interface for API parameters
+interface IncomeCurrencyData {
+  income: number;       // Using 'income' instead of 'monthlyIncome'
+  currency: string;     // Using 'currency' instead of 'preferredCurrency'
+}
+
 const Profile: React.FC = () => {
   const [user, setUser] = useState<User>({
     username: '',
@@ -111,9 +117,8 @@ const Profile: React.FC = () => {
     try {
       const token = localStorage.getItem('token') || '';
       const response = await updateUserIncomeAndCurrency(token, {
-        userId: user.id,
-        monthlyIncome: income,
-        preferredCurrency: user.preferredCurrency,
+        income: income,                       // Changed from userId and monthlyIncome
+        currency: user.preferredCurrency,     // Changed from preferredCurrency
       });
       setUser(response.user);
       localStorage.setItem('user', JSON.stringify(response.user));
@@ -128,9 +133,8 @@ const Profile: React.FC = () => {
     try {
       const token = localStorage.getItem('token') || '';
       const response = await updateUserIncomeAndCurrency(token, {
-        userId: user.id,
-        monthlyIncome: user.monthlyIncome,
-        preferredCurrency: currency.value,
+        income: user.monthlyIncome,          // Changed from userId and monthlyIncome
+        currency: currency.value,            // Changed from preferredCurrency
       });
       setUser(response.user);
       localStorage.setItem('user', JSON.stringify(response.user));
