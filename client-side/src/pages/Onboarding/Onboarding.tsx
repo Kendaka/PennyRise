@@ -27,6 +27,7 @@ const Onboarding: React.FC = () => {
   const [error, setError] = useState<string>('');
   const navigate = useNavigate();
 
+  // Removed the unused state variable 'preferredCurrency'
   const handleSubmit = async () => {
     if (!monthlyIncome) {
       setError('Monthly income is required.');
