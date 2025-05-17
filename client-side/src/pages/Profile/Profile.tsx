@@ -43,6 +43,7 @@ interface PasswordChange {
   newPassword: string;
 }
 
+// Define the types for the savings goal
 interface SavingsGoal {
   name: string;
   saved: number;
