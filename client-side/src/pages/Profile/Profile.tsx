@@ -31,6 +31,7 @@ interface User {
   profilePicture?: string;
 }
 
+// Define the types for the currency options
 interface CurrencyOption {
   value: string;
   label: string;
