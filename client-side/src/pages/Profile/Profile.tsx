@@ -84,6 +84,7 @@ const Profile: React.FC = () => {
       setUser(JSON.parse(userData));
     }
 
+    // Fetch the user data from local storage
     const fetchBudgets = async () => {
       try {
         const token = localStorage.getItem('token') || '';
