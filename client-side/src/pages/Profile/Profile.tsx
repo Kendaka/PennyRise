@@ -77,6 +77,7 @@ const Profile: React.FC = () => {
   // Define the initial state for the savings goals
   const navigate = useNavigate();
 
+  // Define the initial state for the currency options
   useEffect(() => {
     const userData = localStorage.getItem('user');
     if (userData) {
