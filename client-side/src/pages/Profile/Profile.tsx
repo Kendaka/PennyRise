@@ -64,7 +64,7 @@ const Profile: React.FC = () => {
     preferredCurrency: '',
     profilePicture: '',
   });
-
+// Define the initial state for the user
   const [showChangePassword, setShowChangePassword] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
