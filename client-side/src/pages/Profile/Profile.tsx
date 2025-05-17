@@ -37,6 +37,7 @@ interface CurrencyOption {
   label: string;
 }
 
+// Define the types for the password change and savings goal
 interface PasswordChange {
   currentPassword: string;
   newPassword: string;
