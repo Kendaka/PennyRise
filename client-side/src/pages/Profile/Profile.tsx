@@ -74,6 +74,7 @@ const Profile: React.FC = () => {
   const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>([]);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
+  // Define the initial state for the savings goals
   const navigate = useNavigate();
 
   useEffect(() => {
