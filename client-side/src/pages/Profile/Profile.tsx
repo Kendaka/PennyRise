@@ -167,6 +167,7 @@ const Profile: React.FC = () => {
     }
   };
 
+  // Handle the reset monthly data function
   const handleResetMonthlyData = () => {
     setShowConfirmationModal(true);
   };
