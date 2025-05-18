@@ -172,6 +172,7 @@ const Profile: React.FC = () => {
     setShowConfirmationModal(true);
   };
 
+  // Handle the confirm reset monthly data function
   const handleConfirmReset = async () => {
     try {
       const token = localStorage.getItem('token') || '';
