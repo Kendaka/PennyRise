@@ -215,12 +215,13 @@ const Profile: React.FC = () => {
     });
   };
 
+  // Handle the refresh dashboard data function
   const refreshDashboardData = async () => {
     try {
       const token = localStorage.getItem('token') || '';
       const userResponse = await getUser(token);
       const budgetsResponse = await getBudgets(token);
-      await getTransactions(token); // optional: use the result if needed
+      await getTransactions(token); 
       await getSavingsGoals(token); // optional: use the result if needed
 
       setUser(userResponse.user);
