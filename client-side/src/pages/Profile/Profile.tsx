@@ -100,6 +100,7 @@ const Profile: React.FC = () => {
     fetchBudgets();
   }, []);
 
+  // Fetch the user data from local storagec
   const handleUpdateUser = async (updatedUser: Partial<User>) => {
     try {
       const token = localStorage.getItem('token') || '';
