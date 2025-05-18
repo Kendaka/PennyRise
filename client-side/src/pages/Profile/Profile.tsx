@@ -271,10 +271,10 @@ const Profile: React.FC = () => {
     }
   };
 
-  
+
   return (
     <div className="min-h-screen bg-background mb-8 flex flex-col">
-      <BottomNavbar />
+      <BottomNavbar /> // Add the BottomNavbar component here
       <main className="flex-grow p-4 space-y-4 overflow-y-auto pb-12 mt-2">
         <ProfileHeader user={user} onChangeImage={handleChangeImage} onDeleteImage={handleDeleteImage} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
