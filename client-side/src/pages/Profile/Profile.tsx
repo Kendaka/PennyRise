@@ -256,6 +256,7 @@ const Profile: React.FC = () => {
     }
   };
 
+  // Handle the delete image function
   const handleDeleteImage = async () => {
     try {
       const token = localStorage.getItem('token') || '';
