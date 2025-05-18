@@ -279,7 +279,7 @@ const Profile: React.FC = () => {
         <ProfileHeader user={user} onChangeImage={handleChangeImage} onDeleteImage={handleDeleteImage} /> / / Add the ProfileHeader component here
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
           <div className="space-y-4">
-            <ProfileDetails user={user} onUpdate={handleUpdateUser} />
+            <ProfileDetails user={user} onUpdate={handleUpdateUser} /> // Add the ProfileDetails component here
           </div>
           <div className="space-y-4">
             <MonthlyIncomeField initialIncome={user.monthlyIncome} onSave={handleSaveIncome} />
