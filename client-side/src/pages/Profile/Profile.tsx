@@ -271,6 +271,7 @@ const Profile: React.FC = () => {
     }
   };
 
+  
   return (
     <div className="min-h-screen bg-background mb-8 flex flex-col">
       <BottomNavbar />
