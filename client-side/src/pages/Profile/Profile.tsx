@@ -282,8 +282,8 @@ const Profile: React.FC = () => {
             <ProfileDetails user={user} onUpdate={handleUpdateUser} /> // Add the ProfileDetails component here
           </div>
           <div className="space-y-4">
-            <MonthlyIncomeField initialIncome={user.monthlyIncome} onSave={handleSaveIncome} />
-            <CurrencyField onSave={handleSaveCurrency} />
+            <MonthlyIncomeField initialIncome={user.monthlyIncome} onSave={handleSaveIncome} /> // Add the MonthlyIncomeField component here
+            <CurrencyField onSave={handleSaveCurrency} /> // Add the CurrencyField component here
           </div>
         </div>
         <div className="flex flex-col items-center mt-4 space-y-2">
