@@ -114,6 +114,7 @@ const Profile: React.FC = () => {
     }
   };
 
+  // Handle the save income and currency functions
   const handleSaveIncome = async (income: number) => {
     if (income < totalAllocated) {
       setErrorMessage(`Monthly income cannot be lower than the total allocated budget (${totalAllocated}).`);
