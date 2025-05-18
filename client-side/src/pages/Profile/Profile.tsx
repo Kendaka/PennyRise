@@ -237,6 +237,7 @@ const Profile: React.FC = () => {
     }
   };
 
+  // Handle the change image function
   const handleChangeImage = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
