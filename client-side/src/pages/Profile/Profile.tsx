@@ -153,6 +153,7 @@ const Profile: React.FC = () => {
     }
   };
 
+  // Handle the change password function
   const handleChangePassword = async ({ currentPassword, newPassword }: PasswordChange) => {
     try {
       const token = localStorage.getItem('token') || '';
