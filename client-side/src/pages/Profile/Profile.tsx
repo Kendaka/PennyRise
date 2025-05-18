@@ -190,6 +190,7 @@ const Profile: React.FC = () => {
     }
   };
 
+  // Handle the refresh savings data function
   const refreshSavingsData = (totalRemaining: number) => {
     setSavingsGoals((prevGoals) => {
       const updated = prevGoals.map((goal) =>
