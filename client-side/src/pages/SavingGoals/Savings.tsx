@@ -49,6 +49,7 @@ const Savings: React.FC = () => {
     goalName: '',
   });
 
+  // Fetch savings goals and budgets when the component mounts
   useEffect(() => {
     const fetchSavingsGoals = async () => {
       try {
