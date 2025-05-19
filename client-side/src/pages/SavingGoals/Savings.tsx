@@ -40,7 +40,7 @@ interface AchievementModalState {
 const Savings: React.FC = () => {
   const [savingsGoals, setSavingsGoals] = useState<SavingsGoalData[]>([]); // State to hold savings goals
   const [budgets, setBudgets] = useState<Budget[]>([]); // State to hold budgets
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // State to control modal visibility
   const [currentGoal, setCurrentGoal] = useState<SavingsGoalData | undefined>(undefined);
   const [remainingBalance, setRemainingBalance] = useState<number>(0);
   const [token, setToken] = useState<string>('');
