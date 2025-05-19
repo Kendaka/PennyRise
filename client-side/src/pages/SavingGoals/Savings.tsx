@@ -20,6 +20,7 @@ interface SavingsGoalData {
   saved: number;
 }
 
+// Define the Budget interface
 interface Budget {
   id: string;
   category: string;
@@ -30,6 +31,7 @@ interface User {
   monthlyIncome: number;
 }
 
+// Define the AchievementModalState interface
 interface AchievementModalState {
   isOpen: boolean;
   goalName: string;
