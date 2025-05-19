@@ -47,7 +47,7 @@ const Savings: React.FC = () => {
   const [achievementModal, setAchievementModal] = useState<AchievementModalState>({
     isOpen: false,
     goalName: '',
-  });
+  }); // State to control the achievement modal visibility
 
   // Fetch savings goals and budgets when the component mounts
   useEffect(() => {
