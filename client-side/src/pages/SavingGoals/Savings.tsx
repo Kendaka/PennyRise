@@ -43,7 +43,7 @@ const Savings: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // State to control modal visibility
   const [currentGoal, setCurrentGoal] = useState<SavingsGoalData | undefined>(undefined); // State to hold the current goal being edited
   const [remainingBalance, setRemainingBalance] = useState<number>(0); // State to hold the remaining balance
-  const [token, setToken] = useState<string>('');
+  const [token, setToken] = useState<string>(''); // State to hold the token
   const [achievementModal, setAchievementModal] = useState<AchievementModalState>({
     isOpen: false,
     goalName: '',
