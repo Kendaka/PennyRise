@@ -139,6 +139,7 @@ const Savings: React.FC = () => {
     }
   };
 
+  // Function to refresh savings data
   const refreshSavingsData = async () => {
     try {
       const token = localStorage.getItem('token') || '';
