@@ -98,6 +98,7 @@ const Savings: React.FC = () => {
     fetchUserData();
   }, [budgets, savingsGoals]);
 
+  // Function to handle saving a goal
   const handleSaveGoal = async (goal: Omit<SavingsGoalData, 'id'>) => {
     try {
       if (currentGoal) {
