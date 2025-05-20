@@ -150,6 +150,7 @@ const Savings: React.FC = () => {
     }
   };
 
+  // Fetch savings goals when the component mounts
   useEffect(() => {
     refreshSavingsData();
   }, []);
