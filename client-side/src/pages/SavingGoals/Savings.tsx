@@ -122,6 +122,7 @@ const Savings: React.FC = () => {
     }
   };
 
+  // Function to handle editing a goal
   const handleEditGoal = (goal: SavingsGoalData) => {
     setCurrentGoal(goal);
     setIsModalOpen(true);
