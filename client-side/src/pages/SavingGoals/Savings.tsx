@@ -80,6 +80,7 @@ const Savings: React.FC = () => {
     fetchBudgets();
   }, []);
 
+  // Fetch user data to calculate remaining balance
   useEffect(() => {
     const fetchUserData = async () => {
       try {
