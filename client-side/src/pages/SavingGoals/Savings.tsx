@@ -128,6 +128,7 @@ const Savings: React.FC = () => {
     setIsModalOpen(true);
   };
 
+  // Function to handle deleting a goal
   const handleDeleteGoal = async (index: number) => {
     try {
       const goalId = savingsGoals[index].id;
