@@ -97,6 +97,7 @@ const Transactions: React.FC = () => {
     }
   };
 
+  // Function to handle deleting a transaction
   const handleDeleteTransaction = async (index: number) => {
     try {
       const transactionId = transactions[index].id;
