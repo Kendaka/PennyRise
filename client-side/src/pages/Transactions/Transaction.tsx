@@ -53,6 +53,7 @@ const Transactions: React.FC = () => {
       }
     };
 
+    // Fetch budgets
     const fetchBudgets = async () => {
       try {
         const token = localStorage.getItem('token') || '';
