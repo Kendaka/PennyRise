@@ -121,6 +121,7 @@ const Transactions: React.FC = () => {
     search ? transaction.name.toLowerCase().includes(search.toLowerCase()) : true
   );
 
+  // Function to handle closing the error modal
   const handleCloseErrorModal = () => {
     setShowErrorModal(false);
   };
