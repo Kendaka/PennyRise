@@ -9,6 +9,7 @@ interface UserData {
   [key: string]: any;
 }
 
+// Define the types for transactions and budgets
 interface ProfileData {
   [key: string]: any;
 }
