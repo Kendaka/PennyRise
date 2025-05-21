@@ -116,6 +116,7 @@ const Transactions: React.FC = () => {
     }
   };
 
+  // Filter transactions based on search input
   const filteredTransactions = transactions.filter((transaction) =>
     search ? transaction.name.toLowerCase().includes(search.toLowerCase()) : true
   );
