@@ -68,6 +68,7 @@ const Transactions: React.FC = () => {
     fetchBudgets();
   }, []);
 
+  // Function to handle adding a transaction
   const handleAddTransaction = async (transaction: Omit<Transaction, 'id'>) => {
     try {
       const budget = budgets.find((b) => b.category === transaction.category);
