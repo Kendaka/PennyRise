@@ -11,6 +11,7 @@ import {
   getBudgets,
 } from '../../services/api';
 
+// Define the types for transactions and budgets
 interface Transaction {
   id: string;
   name: string;
