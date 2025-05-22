@@ -189,6 +189,7 @@ export const getSavingsGoals = async (token: string) => {
   return response.data;
 };
 
+// Get savings goal by ID
 export const updateSavingsGoal = async (token: string, savingsGoalData: SavingsGoalData) => {
   const response = await axios.put(`${API_URL}/savings/update`, savingsGoalData, {
     headers: { Authorization: `Bearer ${token}` },
