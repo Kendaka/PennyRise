@@ -181,6 +181,7 @@ export const createSavingsGoal = async (token: string, savingsGoalData: SavingsG
   return response.data;
 };
 
+// Get all savings goals
 export const getSavingsGoals = async (token: string) => {
   const response = await axios.get(`${API_URL}/savings`, {
     headers: { Authorization: `Bearer ${token}` },
