@@ -156,6 +156,7 @@ export const createTransaction = async (token: string, transactionData: Transact
   return response.data;
 };
 
+// Get all transactions
 export const getTransactions = async (token: string) => {
   const response = await axios.get(`${API_URL}/transactions`, {
     headers: { Authorization: `Bearer ${token}` },
