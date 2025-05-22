@@ -164,6 +164,7 @@ export const getTransactions = async (token: string) => {
   return response.data;
 };
 
+// Get transaction by ID
 export const deleteTransaction = async (token: string, transactionId: string) => {
   const response = await axios.delete(`${API_URL}/transactions/delete`, {
     headers: { Authorization: `Bearer ${token}` },
