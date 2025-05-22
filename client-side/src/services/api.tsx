@@ -197,6 +197,7 @@ export const updateSavingsGoal = async (token: string, savingsGoalData: SavingsG
   return response.data;
 };
 
+// Get detailed savings goal by ID
 export const deleteSavingsGoal = async (token: string, goalId: string) => {
   const response = await axios.delete(`${API_URL}/savings/delete`, {
     headers: { Authorization: `Bearer ${token}` },
@@ -204,7 +205,7 @@ export const deleteSavingsGoal = async (token: string, goalId: string) => {
   });
   return response.data;
 };
-
+// Monthly Data
 export const resetMonthlyData = async (token: string, data: ResetData) => {
   const response = await axios.put(`${API_URL}/users/reset-monthly-data`, data, {
     headers: { Authorization: `Bearer ${token}` },
