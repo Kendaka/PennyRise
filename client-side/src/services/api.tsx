@@ -131,6 +131,7 @@ export const getBudgets = async (token: string) => {
   return response.data;
 };
 
+// Get budget by ID
 export const updateBudget = async (token: string, budgetData: BudgetData) => {
   const response = await axios.put(`${API_URL}/budgets/update`, budgetData, {
     headers: { Authorization: `Bearer ${token}` },
