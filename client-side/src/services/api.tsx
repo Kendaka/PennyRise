@@ -139,6 +139,7 @@ export const updateBudget = async (token: string, budgetData: BudgetData) => {
   return response.data;
 };
 
+// Get detailed budget by ID
 export const deleteBudget = async (token: string, budgetId: string) => {
   const response = await axios.delete(`${API_URL}/budgets/delete`, {
     headers: { Authorization: `Bearer ${token}` },
