@@ -123,6 +123,7 @@ export const createBudget = async (token: string, budgetData: BudgetData) => {
   return response.data;
 };
 
+// Get all budgets
 export const getBudgets = async (token: string) => {
   const response = await axios.get(`${API_URL}/budgets`, {
     headers: { Authorization: `Bearer ${token}` },
