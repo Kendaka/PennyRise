@@ -26,7 +26,7 @@ const App: React.FC = () => {
       <Route path="/budgeting" element={<Budgeting />} /> // Budgeting page
       <Route path="/savings" element={<Savings />} /> // Savings goals page
       <Route path="/profile" element={<Profile />} /> // Profile page
-      <Route path="/onboarding" element={<Onboarding />} />
+      <Route path="/onboarding" element={<Onboarding />} /> // Onboarding page
     </Routes>
   );
 };
