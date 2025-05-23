@@ -21,7 +21,7 @@ const App: React.FC = () => {
       <Route path="/forgot-password" element={<ForgotPassword />} /> // Forgot password page
       <Route path="/reset-password" element={<ResetPassword />} /> // Reset password page
       <Route path="/register" element={<Registration />} /> // Registration page
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} /> // Dashboard page
       <Route path="/transactions" element={<Transactions />} />
       <Route path="/budgeting" element={<Budgeting />} />
       <Route path="/savings" element={<Savings />} />
