@@ -6,6 +6,7 @@ export interface Category {
   hoverColor: string;
 }
 
+// This array contains the categories used in the application, each with a name, value, color, and hover color.
 const categories: Category[] = [
   { name: "Essentials", value: "essentials", color: "#1F4E78", hoverColor: "#174F6B" },
   { name: "Entertainment", value: "entertainment", color: "#3DA5D9", hoverColor: "#3394C9" },
