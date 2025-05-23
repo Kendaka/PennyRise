@@ -4,6 +4,7 @@ export interface CurrencyOption {
   label: string;
 }
 
+// This array contains the currency options used in the application, each with a value and label.
 export const currencyOptions: CurrencyOption[] = [
   { value: 'USD', label: 'USD - $' },
   { value: 'EUR', label: 'EUR - €' },
