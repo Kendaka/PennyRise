@@ -12,6 +12,7 @@ import Savings from "./pages/SavingGoals/Savings";
 import Profile from "./pages/Profile/Profile";
 import Onboarding from "./pages/Onboarding/Onboarding";
 
+// This file contains the main application component that sets up the routing for the application.
 const App: React.FC = () => {
 
   return (
