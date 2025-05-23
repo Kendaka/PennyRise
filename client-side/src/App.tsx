@@ -19,7 +19,7 @@ const App: React.FC = () => {
       <Route path="/" element={<Home />} /> // Home page
       <Route path="/login" element={<Login />} /> // Login page
       <Route path="/forgot-password" element={<ForgotPassword />} /> // Forgot password page
-      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} /> // Reset password page
       <Route path="/register" element={<Registration />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/transactions" element={<Transactions />} />
