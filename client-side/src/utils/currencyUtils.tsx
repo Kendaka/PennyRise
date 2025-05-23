@@ -5,6 +5,7 @@ export type CurrencyCode =
   | 'CAD' | 'CHF' | 'CNY' | 'INR' | 'MXN'
   | 'BRL' | 'ZAR' | 'PHP';
 
+  // This type defines the currency codes used in the application.
 const currencySymbols: Record<CurrencyCode, string> = {
   USD: '$',
   EUR: '€',
