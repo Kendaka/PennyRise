@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom styles */
 .loader {
     border: 16px solid #f3f3f3; 
     border-top: 16px solid #005f73; 
