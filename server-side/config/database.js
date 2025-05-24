@@ -3,6 +3,7 @@ require('dotenv').config();
 
 console.log('DB_HOST:', process.env.DB_HOST); 
 
+// Ensure that the environment variables are loaded correctly
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
