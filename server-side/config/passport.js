@@ -29,7 +29,7 @@ passport.use(new GoogleStrategy({
   console.log('Google profile:', profile); 
   // Use the userService to register or update the user based on the Google profile
   try {
-    const user = await userService.registerOrUpdateGoogleUser(profile);
+    const user = await userService.registerOrUpdateGoogleUser(profile); // Register or update the user in the database
     done(null, user);
   } catch (error) {
     done(error, null);
