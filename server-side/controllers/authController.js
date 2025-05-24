@@ -1,3 +1,4 @@
+// This file contains TypeScript declarations for various modules and assets
 const authService = require('../services/authService');
 
 const requestPasswordReset = async (req, res) => {
