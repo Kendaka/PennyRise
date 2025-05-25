@@ -5,6 +5,7 @@ const createBudget = async (req, res) => {
   const { category, allocated } = req.body;
   const userId = req.user.id;
 
+  // Validate input
   if (!category || !allocated) {
     return res.status(400).json({ message: 'All fields are required' });
   }
