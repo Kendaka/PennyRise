@@ -33,6 +33,7 @@ const resetPassword = async (req, res) => {
   }
 };
 
+// Exporting the controllers for use in routes
 module.exports = {
   requestPasswordReset,
   resetPassword,
