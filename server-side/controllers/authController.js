@@ -17,6 +17,7 @@ const requestPasswordReset = async (req, res) => {
   }
 };
 
+// This controller handles the actual password reset using the token
 const resetPassword = async (req, res) => {
   const { token, newPassword } = req.body;
 
