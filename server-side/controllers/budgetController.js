@@ -1,4 +1,4 @@
-const budgetService = require('../services/budgetService');
+const budgetService = require('../services/budgetService'); // Importing the budget service
 
 const createBudget = async (req, res) => {
   const { category, allocated } = req.body;
