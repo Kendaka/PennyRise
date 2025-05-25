@@ -1,5 +1,6 @@
 const budgetService = require('../services/budgetService'); // Importing the budget service
 
+// This controller handles budget-related operations such as creating, fetching, updating, and deleting budgets
 const createBudget = async (req, res) => {
   const { category, allocated } = req.body;
   const userId = req.user.id;
