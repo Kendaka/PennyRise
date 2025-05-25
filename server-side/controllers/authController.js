@@ -1,6 +1,7 @@
 // This file contains TypeScript declarations for various modules and assets
 const authService = require('../services/authService');
 
+// This controller handles password reset requests and processes
 const requestPasswordReset = async (req, res) => {
   const { email } = req.body;
 
