@@ -18,6 +18,7 @@ const createBudget = async (req, res) => {
   }
 };
 
+// This controller fetches all budgets for a user
 const getBudgets = async (req, res) => {
   const userId = req.user.id;
 
