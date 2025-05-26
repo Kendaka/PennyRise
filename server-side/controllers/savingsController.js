@@ -31,6 +31,7 @@ const getSavingsGoals = async (req, res) => {
   }
 };
 
+// This controller updates an existing savings goal
 const updateSavingsGoal = async (req, res) => {
   const { goalId, name, target, saved } = req.body;
 
