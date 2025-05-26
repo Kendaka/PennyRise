@@ -1,5 +1,6 @@
 const savingsService = require('../services/savingsService');
 
+// This controller handles savings goal-related operations such as creating, fetching, updating, and deleting savings goals
 const createSavingsGoal = async (req, res) => {
   const { name, target, saved } = req.body;
   const userId = req.user.id;
