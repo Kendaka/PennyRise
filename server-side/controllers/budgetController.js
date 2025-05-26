@@ -46,6 +46,7 @@ const updateBudget = async (req, res) => {
   }
 };
 
+// This controller deletes a budget
 const deleteBudget = async (req, res) => {
   const { budgetId } = req.body;
 
