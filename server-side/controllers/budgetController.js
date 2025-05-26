@@ -30,6 +30,7 @@ const getBudgets = async (req, res) => {
   }
 };
 
+// This controller updates an existing budget
 const updateBudget = async (req, res) => {
   const { budgetId, allocated } = req.body;
 
