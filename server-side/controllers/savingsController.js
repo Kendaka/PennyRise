@@ -48,6 +48,7 @@ const updateSavingsGoal = async (req, res) => {
   }
 };
 
+// This controller deletes a savings goal
 const deleteSavingsGoal = async (req, res) => {
   const { goalId } = req.body;
 
