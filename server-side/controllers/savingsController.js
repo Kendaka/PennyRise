@@ -18,6 +18,7 @@ const createSavingsGoal = async (req, res) => {
   }
 };
 
+// This controller fetches all savings goals for a user
 const getSavingsGoals = async (req, res) => {
   const userId = req.user.id;
 
