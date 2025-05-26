@@ -1,5 +1,6 @@
 const transactionService = require('../services/transactionService');
 
+// This controller handles transaction-related operations such as creating, fetching, and deleting transactions
 const createTransaction = async (req, res) => {
   const { name, amount, category, type, date } = req.body;
   const userId = req.user.id;
