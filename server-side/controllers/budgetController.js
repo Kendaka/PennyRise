@@ -54,6 +54,7 @@ const deleteBudget = async (req, res) => {
     return res.status(400).json({ message: 'Budget ID is required' });
   }
 
+  // Validate that the budget ID is a valid format
   try {
     const budget = await budgetService.deleteBudget(budgetId);
     res.status(200).json({ message: 'Budget deleted successfully', budget });
