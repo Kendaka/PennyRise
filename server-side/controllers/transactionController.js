@@ -17,6 +17,7 @@ const createTransaction = async (req, res) => {
   }
 };
 
+// This controller fetches all transactions for a user
 const getTransactions = async (req, res) => {
   const userId = req.user.id;
 
