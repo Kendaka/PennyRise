@@ -33,6 +33,6 @@ const Budget = sequelize.define('Budget', {
 });
 
 User.hasMany(Budget, { foreignKey: 'userId' }); // A User can have multiple Budgets
-Budget.belongsTo(User, { foreignKey: 'userId' });
+Budget.belongsTo(User, { foreignKey: 'userId' }); // A Budget belongs to a User
 
 module.exports = Budget;
