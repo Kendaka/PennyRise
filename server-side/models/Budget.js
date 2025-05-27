@@ -2,6 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const User = require('./User');
 
+// This model defines the Budget entity, which is associated with a User
 const Budget = sequelize.define('Budget', {
   id: {
     type: DataTypes.INTEGER,
