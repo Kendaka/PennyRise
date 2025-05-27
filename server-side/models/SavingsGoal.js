@@ -3,6 +3,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const User = require('./User');
 
+// This model defines the SavingsGoal entity, which is associated with a User
 const SavingsGoal = sequelize.define('SavingsGoal', {
   id: {
     type: DataTypes.INTEGER,
