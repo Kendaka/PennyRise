@@ -17,7 +17,7 @@ const createTransaction = async (req, res) => {
   }
 };
 
-// This controller fetches all transactions for a user
+// This controller fetches all transactions for a user 14222481,92002
 const getTransactions = async (req, res) => {
   const userId = req.user.id;
 
@@ -29,6 +29,7 @@ const getTransactions = async (req, res) => {
   }
 };
 
+// This controller deletes a transaction by its ID
 const deleteTransaction = async (req, res) => {
   const { transactionId } = req.body;
 
