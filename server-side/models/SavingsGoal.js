@@ -33,7 +33,7 @@ const SavingsGoal = sequelize.define('SavingsGoal', {
   timestamps: true,
 });
 
-User.hasMany(SavingsGoal, { foreignKey: 'userId' });
+User.hasMany(SavingsGoal, { foreignKey: 'userId' }); // A User can have multiple SavingsGoals
 SavingsGoal.belongsTo(User, { foreignKey: 'userId' }); // A User can have multiple SavingsGoals, and a SavingsGoal belongs to a User
 
 module.exports = SavingsGoal;
