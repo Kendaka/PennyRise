@@ -40,7 +40,7 @@ const Transaction = sequelize.define('Transaction', {
   timestamps: true,
 });
 
-User.hasMany(Transaction, { foreignKey: 'userId' });
+User.hasMany(Transaction, { foreignKey: 'userId' }); // A User can have multiple Transactions
 Transaction.belongsTo(User, { foreignKey: 'userId' });
 
 module.exports = Transaction;
