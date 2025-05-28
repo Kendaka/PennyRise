@@ -2,6 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const User = require('./User');
 
+// This model defines the Transaction entity, which is associated with a User
 const Transaction = sequelize.define('Transaction', {
   id: {
     type: DataTypes.INTEGER,
