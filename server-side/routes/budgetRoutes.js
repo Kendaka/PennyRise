@@ -4,7 +4,7 @@ const authenticateToken = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-router.post('/create', authenticateToken, budgetController.createBudget);
+router.post('/create', authenticateToken, budgetController.createBudget); // Endpoint to create a new budgets
 router.get('/', authenticateToken, budgetController.getBudgets);
 router.put('/update', authenticateToken, budgetController.updateBudget);
 router.delete('/delete', authenticateToken, budgetController.deleteBudget);
