@@ -41,6 +41,6 @@ const Transaction = sequelize.define('Transaction', {
 });
 
 User.hasMany(Transaction, { foreignKey: 'userId' }); // A User can have multiple Transactions
-Transaction.belongsTo(User, { foreignKey: 'userId' });
+Transaction.belongsTo(User, { foreignKey: 'userId' }); // A Transaction belongs to a User
 
 module.exports = Transaction;
