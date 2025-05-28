@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
+// This model defines the User entity, which is the main user profile in the application
 const User = sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
