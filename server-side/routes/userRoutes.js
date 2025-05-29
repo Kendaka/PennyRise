@@ -4,7 +4,7 @@ const authenticateToken = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-router.post('/register', userController.register);
+router.post('/register', userController.register); // Endpoint to register a new user
 router.post('/login', userController.login);
 router.put('/update-income-currency', authenticateToken, userController.updateIncomeAndCurrency);
 router.put('/update-profile', authenticateToken, userController.updateProfile);
