@@ -4,7 +4,7 @@ const authenticateToken = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-router.post('/create', authenticateToken, transactionController.createTransaction);
+router.post('/create', authenticateToken, transactionController.createTransaction); // Endpoint to create a new transaction
 router.get('/', authenticateToken, transactionController.getTransactions);
 router.delete('/delete', authenticateToken, transactionController.deleteTransaction);
 
