@@ -11,7 +11,7 @@ router.put('/update-profile', authenticateToken, userController.updateProfile); 
 router.put('/update-profile-picture', authenticateToken, userController.upload.single('profilePicture'), userController.updateProfilePicture);
 router.put('/update-onboarding-status', authenticateToken, userController.updateOnboardingStatus); // Endpoint to update user's onboarding status
 router.put('/change-password', authenticateToken, userController.changePassword); // Endpoint to change user's password
-router.get('/profile', authenticateToken, userController.getProfile);
+router.get('/profile', authenticateToken, userController.getProfile); // Endpoint to get user's profile information
 router.put('/reset-monthly-data', userController.resetMonthlyData);
 
 module.exports = router;
