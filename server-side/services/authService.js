@@ -32,6 +32,7 @@ const resetPassword = async (token, newPassword) => {
     throw new Error('Password reset token is invalid or has expired');
   }
 
+  // Validate the new password (you can add your own validation logic here)
   const hashedPassword = await bcrypt.hash(newPassword, 10);
   user.password = hashedPassword;
   user.resetPasswordToken = null;
