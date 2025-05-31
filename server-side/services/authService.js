@@ -19,6 +19,7 @@ const generateResetToken = async (email) => {
   return token;
 };
 
+// This function resets the user's password using the provided token and new password.
 const resetPassword = async (token, newPassword) => {
   const user = await User.findOne({
     where: {
