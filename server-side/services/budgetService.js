@@ -2,6 +2,7 @@ const Budget = require('../models/Budget');
 const User = require('../models/User');
 const Transaction = require('../models/Transaction');
 
+// This file contains the logic for creating, retrieving, updating, and deleting budgets for users.
 const createBudget = async (userId, category, allocated) => {
   const user = await User.findByPk(userId);
   const budgets = await Budget.findAll({ where: { userId } });
