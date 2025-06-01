@@ -24,6 +24,7 @@ const getBudgetsByUserId = async (userId) => {
   return budgets;
 };
 
+// Updates an existing budget by its ID
 const updateBudget = async (budgetId, allocated) => {
   const budget = await Budget.findByPk(budgetId);
   if (!budget) {
