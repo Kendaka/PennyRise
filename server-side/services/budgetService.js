@@ -13,7 +13,7 @@ const createBudget = async (userId, category, allocated) => {
     throw new Error(`YOU DON'T HAVE ENOUGH BALANCE FOR THIS BUDGET. YOUR BALANCE: ${user.monthlyIncome - totalAllocated}`);
   }
 
-  
+  // Check if the category already exists for the user
   const budget = await Budget.create({ userId, category, allocated });
   return budget;
 };
