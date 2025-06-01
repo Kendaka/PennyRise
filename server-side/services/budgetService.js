@@ -18,6 +18,7 @@ const createBudget = async (userId, category, allocated) => {
   return budget;
 };
 
+// Retrieves all budgets for a specific user by their userId
 const getBudgetsByUserId = async (userId) => {
   const budgets = await Budget.findAll({ where: { userId } });
   return budgets;
