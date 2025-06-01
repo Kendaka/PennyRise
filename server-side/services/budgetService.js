@@ -35,7 +35,8 @@ const updateBudget = async (budgetId, allocated) => {
     throw new Error(`The budget limit cannot be less than the amount already spent (${budget.spent}).`);
   }
 
-  const user = await User.findByPk(budget.userId);
+
+  const user = await User.findByPk(budget.userId);// Ensure the user exists
   const budgets = await Budget.findAll({ where: { userId: budget.userId } });
 
   const totalAllocated = budgets.reduce((sum, b) => sum + (b.id !== budgetId ? b.allocated : 0), 0);
