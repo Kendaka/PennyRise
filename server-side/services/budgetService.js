@@ -39,7 +39,7 @@ const updateBudget = async (budgetId, allocated) => {
   const user = await User.findByPk(budget.userId);// Ensure the user exists
   const budgets = await Budget.findAll({ where: { userId: budget.userId } }); // Get all budgets for the user
 
-  const totalAllocated = budgets.reduce((sum, b) => sum + (b.id !== budgetId ? b.allocated : 0), 0);
+  const totalAllocated = budgets.reduce((sum, b) => sum + (b.id !== budgetId ? b.allocated : 0), 0); // Exclude the current budget from the total
 
   if (totalAllocated + allocated > user.monthlyIncome) {
     throw new Error(`YOU DON'T HAVE ENOUGH BALANCE FOR THIS BUDGET. YOUR BALANCE: ${user.monthlyIncome - totalAllocated}`);
