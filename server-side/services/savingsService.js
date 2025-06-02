@@ -24,6 +24,7 @@ const getSavingsGoalsByUserId = async (userId) => {
   return savingsGoals;
 };
 
+// Updates an existing savings goal by its ID
 const updateSavingsGoal = async (goalId, name, target, saved) => {
   const savingsGoal = await SavingsGoal.findByPk(goalId);
   if (!savingsGoal) {
