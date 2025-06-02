@@ -48,6 +48,7 @@ const registerOrUpdateGoogleUser = async (profile) => {
   return user;
 };
 
+// This function generates a JWT token for the user.
 const generateToken = (user) => {
   return jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 };
