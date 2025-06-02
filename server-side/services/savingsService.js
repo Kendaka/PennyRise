@@ -2,6 +2,7 @@ const SavingsGoal = require('../models/SavingsGoal');
 const User = require('../models/User');
 const Budget = require('../models/Budget');
 
+// This file contains the logic for creating, retrieving, updating, and deleting savings goals for users.
 const createSavingsGoal = async (userId, name, target, saved) => {
   const user = await User.findByPk(userId);
 
