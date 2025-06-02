@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+
+// This file contains the logic for user registration, login, and profile management.
 const registerUser = async (username, email, password) => {
   const existingEmail = await User.findOne({ where: { email } });
   if (existingEmail) {
