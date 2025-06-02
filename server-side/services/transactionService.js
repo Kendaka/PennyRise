@@ -33,6 +33,7 @@ const getTransactionsByUserId = async (userId) => {
   return transactions;
 };
 
+// Deletes a transaction by its ID and updates the associated budget if it's an expense
 const deleteTransaction = async (transactionId) => {
   const transaction = await Transaction.findByPk(transactionId);
   if (!transaction) {
