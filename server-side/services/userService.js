@@ -24,6 +24,7 @@ const registerUser = async (username, email, password) => {
   return user;
 };
 
+// This function registers or updates a user based on their Google profile information.
 const registerOrUpdateGoogleUser = async (profile) => {
   const { id: googleId, displayName: username, emails } = profile;
 
