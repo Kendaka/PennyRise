@@ -7,7 +7,7 @@ const createSavingsGoal = async (userId, name, target, saved) => {
   const user = await User.findByPk(userId);
 
   const totalAllocated = await Budget.sum('allocated', { where: { userId } }); // Sum of all allocated budgets for the user
-  const totalSaved = await SavingsGoal.sum('saved', { where: { userId } });
+  const totalSaved = await SavingsGoal.sum('saved', { where: { userId } }); // Sum of all saved amounts in savings goals for the user
   const availableBalance = user.monthlyIncome - totalAllocated - totalSaved;
 
   if (saved > availableBalance) {
