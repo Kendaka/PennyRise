@@ -48,6 +48,7 @@ const updateSavingsGoal = async (goalId, name, target, saved) => {
   return savingsGoal;
 };
 
+// Deletes a savings goal by its ID
 const deleteSavingsGoal = async (goalId) => {
   const savingsGoal = await SavingsGoal.findByPk(goalId);
   if (!savingsGoal) {
