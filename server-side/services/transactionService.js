@@ -27,6 +27,7 @@ const createTransaction = async (userId, name, amount, category, type, date) => 
   return transaction;
 };
 
+//  Retrieves all transactions for a specific user by their userId
 const getTransactionsByUserId = async (userId) => {
   const transactions = await Transaction.findAll({ where: { userId } });
   return transactions;
