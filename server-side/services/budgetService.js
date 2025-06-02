@@ -57,6 +57,7 @@ const deleteBudget = async (budgetId) => {
     throw new Error('Budget not found');
   }
 
+  // Check if there are any transactions associated with this budget
   await Transaction.destroy({ where: { userId: budget.userId, category: budget.category } });
 
   await budget.destroy();
