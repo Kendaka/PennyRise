@@ -50,6 +50,7 @@ const updateBudget = async (budgetId, allocated) => {
   return budget;
 };
 
+// Deletes a budget by its ID and removes associated transactions
 const deleteBudget = async (budgetId) => {
   const budget = await Budget.findByPk(budgetId);
   if (!budget) {
