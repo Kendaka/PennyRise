@@ -8,7 +8,7 @@ const createSavingsGoal = async (userId, name, target, saved) => {
 
   const totalAllocated = await Budget.sum('allocated', { where: { userId } }); // Sum of all allocated budgets for the user
   const totalSaved = await SavingsGoal.sum('saved', { where: { userId } }); // Sum of all saved amounts in savings goals for the user
-  const availableBalance = user.monthlyIncome - totalAllocated - totalSaved;
+  const availableBalance = user.monthlyIncome - totalAllocated - totalSaved; // Calculate available balance
 
   if (saved > availableBalance) {
     throw new Error('Saved amount exceeds available balance');
