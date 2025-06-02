@@ -6,7 +6,7 @@ const Budget = require('../models/Budget');
 const createSavingsGoal = async (userId, name, target, saved) => {
   const user = await User.findByPk(userId);
 
-  const totalAllocated = await Budget.sum('allocated', { where: { userId } });
+  const totalAllocated = await Budget.sum('allocated', { where: { userId } }); // Sum of all allocated budgets for the user
   const totalSaved = await SavingsGoal.sum('saved', { where: { userId } });
   const availableBalance = user.monthlyIncome - totalAllocated - totalSaved;
 
