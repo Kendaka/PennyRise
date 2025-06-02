@@ -1,6 +1,7 @@
 const Transaction = require('../models/Transaction');
 const Budget = require('../models/Budget');
 
+// Transactions are linked to budgets and users, ensuring that expenses do not exceed allocated budgets.
 const createTransaction = async (userId, name, amount, category, type, date) => {
 
   const budgets = await Budget.findAll({ where: { userId } });
