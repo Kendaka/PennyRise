@@ -18,6 +18,7 @@ const createSavingsGoal = async (userId, name, target, saved) => {
   return savingsGoal;
 };
 
+// Retrieves all savings goals for a specific user by their userId
 const getSavingsGoalsByUserId = async (userId) => {
   const savingsGoals = await SavingsGoal.findAll({ where: { userId } });
   return savingsGoals;
