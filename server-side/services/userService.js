@@ -69,6 +69,7 @@ const loginUser = async (email, password) => {
   return { user, token };
 };
 
+// This function registers a user with Google and returns the user object.
 const registerWithGoogle = async (profile) => {
   const { id: googleId, displayName: username, emails } = profile;
   const email = emails[0].value;
