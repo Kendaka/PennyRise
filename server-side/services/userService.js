@@ -145,6 +145,7 @@ const changePassword = async (userId, currentPassword, newPassword) => {
     throw new Error('User not found');
   }
 
+  // Check if the current password is correct
   const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
   if (!isPasswordValid) {
     throw new Error('Current password is incorrect');
