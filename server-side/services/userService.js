@@ -98,6 +98,7 @@ const updateUserIncomeAndCurrency = async (userId, monthlyIncome, preferredCurre
   return user;
 };
 
+// This function updates the user's profile information, including username and profile picture.
 const updateUserProfile = async (userId, username, profilePicture) => {
   const user = await User.findByPk(userId);
   if (!user) {
