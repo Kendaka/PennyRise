@@ -84,6 +84,7 @@ const registerWithGoogle = async (profile) => {
   return user;
 };
 
+// This function updates the user's monthly income and preferred currency.
 const updateUserIncomeAndCurrency = async (userId, monthlyIncome, preferredCurrency) => {
   const user = await User.findByPk(userId);
   if (!user) {
