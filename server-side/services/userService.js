@@ -53,6 +53,7 @@ const generateToken = (user) => {
   return jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 };
 
+// This function logs in a user by verifying their email and password.
 const loginUser = async (email, password) => {
   const user = await User.findOne({ where: { email } });
   if (!user) {
