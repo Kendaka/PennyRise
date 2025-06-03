@@ -112,6 +112,7 @@ const updateUserProfile = async (userId, username, profilePicture) => {
   return user;
 };
 
+// This function updates the user's profile picture.
 const updateUserProfilePicture = async (userId, profilePicture) => {
   const user = await User.findByPk(userId);
   if (!user) {
