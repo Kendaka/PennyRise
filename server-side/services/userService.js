@@ -167,6 +167,7 @@ const getUserById = async (userId) => {
   return user;
 };
 
+// This function resets the monthly data for all users, including budgets and savings goals.
 const resetMonthlyData = async () => {
   const users = await User.findAll();
 
