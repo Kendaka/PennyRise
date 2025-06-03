@@ -125,6 +125,7 @@ const updateUserProfilePicture = async (userId, profilePicture) => {
   return user;
 };
 
+// This function updates the user's onboarding status.
 const updateUserOnboardingStatus = async (userId, onboardingCompleted) => {
   const user = await User.findByPk(userId);
   if (!user) {
