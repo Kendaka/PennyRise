@@ -138,6 +138,7 @@ const updateUserOnboardingStatus = async (userId, onboardingCompleted) => {
   return user;
 };
 
+// This function changes the user's password after verifying the current password.
 const changePassword = async (userId, currentPassword, newPassword) => {
   const user = await User.findByPk(userId);
   if (!user) {
