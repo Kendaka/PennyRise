@@ -158,6 +158,7 @@ const changePassword = async (userId, currentPassword, newPassword) => {
   return user;
 };
 
+// This function retrieves a user by their ID.
 const getUserById = async (userId) => {
   const user = await User.findByPk(userId);
   if (!user) {
