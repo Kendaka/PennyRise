@@ -35,7 +35,7 @@ app.use('/api/users', userRoutes); // Define the routes for user-related operati
 app.use('/api/budgets', budgetRoutes); // Define the routes for budget-related operations
 app.use('/api/transactions', transactionRoutes); // Define the routes for transaction-related operations
 app.use('/api/savings', savingsRoutes); // Define the routes for savings-related operations
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve static files from the uploads directory
 
 sequelize.authenticate()
   .then(() => {
