@@ -23,6 +23,7 @@ const corsOptions = {
 // Apply CORS middleware
 app.use(cors(corsOptions)); 
 
+// Middleware for parsing JSON and handling sessions
 app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,
