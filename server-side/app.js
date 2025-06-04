@@ -37,6 +37,7 @@ app.use('/api/transactions', transactionRoutes); // Define the routes for transa
 app.use('/api/savings', savingsRoutes); // Define the routes for savings-related operations
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve static files from the uploads directory
 
+// Connect to the database and synchronize models
 sequelize.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
