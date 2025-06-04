@@ -32,7 +32,7 @@ app.use(session({
 }));
 
 app.use('/api/users', userRoutes); // Define the routes for user-related operations
-app.use('/api/budgets', budgetRoutes); 
+app.use('/api/budgets', budgetRoutes); // Define the routes for budget-related operations
 app.use('/api/transactions', transactionRoutes); 
 app.use('/api/savings', savingsRoutes); 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
