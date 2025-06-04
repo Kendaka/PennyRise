@@ -31,7 +31,7 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-app.use('/api/users', userRoutes); 
+app.use('/api/users', userRoutes); // Define the routes for user-related operations
 app.use('/api/budgets', budgetRoutes); 
 app.use('/api/transactions', transactionRoutes); 
 app.use('/api/savings', savingsRoutes); 
