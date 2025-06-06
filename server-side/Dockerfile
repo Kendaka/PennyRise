@@ -14,5 +14,5 @@ COPY . .
 # Expose the backend ort
 EXPOSE 5000
 
-# Start the serve
+# Start the server
 CMD ["npm", "start"]
